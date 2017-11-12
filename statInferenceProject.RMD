@@ -1,0 +1,193 @@
+---
+title: "Statistical Inference"
+author: "Hailu Teju"
+date: "September 16, 2017"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Simulation - The Exponential Distribution
+
+For the first part of this project, we investigate the exponential distribution using R. We assume that the exponential distribution has rate parameter, $\lambda = 0.2.$ For the exponential distribution with rate parameter $\lambda$, both its theoretical mean and standard deviation are equal to $1/\lambda.$ So here we have:
+$$\mu = \sigma = \frac{1}{\lambda} = \frac{1}{0.2} = 5. \quad \textrm{Thus,}\; \verb+variance+ = \sigma^2=25.$$
+
+To this end, we simulate 1000 averages of 40 exponentials with rate parameter $\lambda = 0.2$ using R's builtin function $\fbox{rexp(n,  rate) },$ and then we observe how the Law of Large Numbers and the Central Limit Theorem work. 
+
+* The Law of Large Numbers (LLN) states that the average limits to what it is estimating, and
+
+* The Central Limit Theorem (CLT) states that the distribution of the averages of iid variables (properly normalized) becomes that of a standard normal as the sample size increases.
+
+Below, we creates 1000 simulations of 40 exponentials with rate parameter 0.2 and show that the averages of the means approach the theoretical mean $\mu = 5$ and the averages of the variance approach the theoretical variance $\sigma^2 =25.$ 
+
+```{r, message=FALSE, warning=FALSE, echo=FALSE}
+library(ggplot2)
+library(datasets) 
+data(ToothGrowth) 
+
+```
+
+```{r simulate_exp_dist, fig.width=9, fig.height = 6, fig.align='center'}
+nosim <- 1000
+
+x <- matrix(rexp(nosim * 40, 0.2), 
+                     nosim)
+
+means <- cumsum(apply(x, 1, mean))/(1:nosim)
+
+vars <- cumsum(apply(x,1,var))/(1:nosim)
+
+plot(means, col="skyblue", pch=1, xlab="Number of samples", main="Averages of the means of 40 exponentials",
+     col.main="dodgerblue", col.lab="dodgerblue")
+
+abline(h=5, col="red", lwd=2, lty=2) # comparing means with the theoretical mean mu = 1/lambda = 5
+
+plot(vars, col="yellowgreen", pch=1, xlab="Number of samples", main="Averages of the variances of 40 exponentials",
+     col.main="dodgerblue", col.lab="dodgerblue")
+
+abline(h=25, col="red", lwd=2, lty=2)
+
+```
+The figure below also shows that when we simulte the means 40 exponentials with parameter $\lambda = 0.2$ one thousand times, we get a distribution that is approximately Gaussian.
+
+```{r}
+mns = NULL
+
+for (i in 1:1000) mns = c(mns, mean(rexp(40, 0.2)))
+
+hist(mns, col="wheat", main="1000 Averages of 40 random exponentials", xlab="Average of 40 random exponential dists.", col.main="dodgerblue", col.lab="dodgerblue")
+
+```
+
+The R code below and the figures generated also confirm the Central Limit Theorem - the more number of independent exponentials with rate parameter $\lambda = 0.2,$ we consider, the closer the distribution of their averages get to that of a standard normal distribution.
+
+```{r, verify_CLT, fig.width=9, fig.height = 6, fig.align='center'}
+nosim <- 1000
+cfunc <- function(x, n) sqrt(n) * (mean(x) - 5) / 5
+dat <- data.frame(
+  x = c(apply(matrix(rexp(nosim * 40, 0.2), 
+                     nosim), 1, cfunc, 40),
+        apply(matrix(rexp(nosim * 80, 0.2), 
+                     nosim), 1, cfunc, 80),
+       apply(matrix(rexp(nosim * 200, 0.2), 
+                     nosim), 1, cfunc, 200)
+       ),
+  size = factor(rep(c(40, 80, 200), rep(nosim, 3))))
+ 
+g <- ggplot(dat, aes(x = x, fill = size)) + geom_histogram(alpha = .20, binwidth=.3, colour = "black", 
+                                                        aes(y = ..density..)) 
+g <- g + stat_function(fun = dnorm, size = 2)
+g <- g + facet_grid(. ~ size)
+g <- g + ggtitle("Distributions of averages of n exponentials with lambda = 0.2 for n=40, 80, & 200")
+g <- g + theme(plot.title=element_text(color="dodgerblue", size=14, hjust=0.5))
+g <- g + theme(axis.title = element_text(size=14, color="dodgerblue"))
+
+g
+``` 
+
+## Basic Inferential Data Analysis
+
+In this second part of the project we analyze the ToothGrowth data.
+
+```{r}
+str(ToothGrowth)
+
+```
+
+Here we see that the data set has 60 observations and 3 variables, length(len), supplement type (supp), and dosage (dose).
+
+```{r}
+head(ToothGrowth)
+
+table(ToothGrowth$supp)
+
+table(ToothGrowth$dose)
+
+sapply(with(ToothGrowth, split(len, supp)), summary)
+```
+The $sapply()$ function above gave us the six values summary of tooth growth (len) with respect to the "OJ" and "VC" supplements.
+
+```{r, fig.width=12, fig.height=9}
+g <- ggplot(ToothGrowth, aes(x=supp, y=len))
+g <- g + geom_boxplot(aes(fill=supp))
+g <- g + facet_grid(.~as.factor(dose)) 
+g <- g + ggtitle("Tooth growth of guinea pigs by supplement type and dosage (mg)")
+g <- g + xlab("Supplement type") + ylab("Tooth length")
+g <- g + theme(plot.title=element_text(color="dodgerblue", size=16, hjust=0.5))
+g <- g + theme(axis.title = element_text(size=14, color="dodgerblue"))
+g <- g + theme(axis.text=element_text(size=14, color="black")) 
+g <- g + theme(strip.text = element_text(size = 16, color='darkblue'))
+g <- g + theme(legend.position = 'right', legend.text=element_text(color='deeppink', size=12)) 
+g
+
+```
+The figure above shows that there is a positive relationship between either supplement type and tooth growth. We can also observe that generally the "OJ" supplement has greater effect on toothgrowth than the "VC" supplement, particularly at dosage levels 0.5 and 1. When dosage level of the "OJ" supplement is increased from 1 to 2, the the increase in tooth growth rate becomes less. On the other had, there seems to be a linear relationship between the "VC" supplement dosage and toothgrowth rate. Furthermore, the figure above suggests that the effect on tooth growth of the "OJ" and "VC" supplements is the about the same.
+
+## Hypothesis Testing
+
+### Test 1 - Supplements "OJ" vs "VC"
+
+Let's assume that there is no difference between the two supplements in their effect on tooth growth (null hypothesis). So here,
+
+* (Null hypothesis) H0: no difference betweeen the two supplements in tooth growth 
+* (Alternative) Ha: tooth grows longer when the "OJ" supplement is used.
+```{r}
+# Split the tooth growth data set by the "OJ" and "VC" supplement types
+
+OJlen <- ToothGrowth$len[ToothGrowth$supp=="OJ"]
+VClen <- ToothGrowth$len[ToothGrowth$supp=="VC"]
+```
+
+Next we will perform a one-sided t-test with unequal variance on the above vectors of values of tooth length.
+
+```{r}
+
+t.test(OJlen, VClen, alternative = "greater", paired = FALSE, var.equal = FALSE, conf.level = 0.95)
+```
+As the p-value (0.03032) is less than $\alpha = 0.05$ (the default value for tolerance of the error alpha), we reject the null hypothesis! In other words, it is very likely that tooth growth rate is higher when the "OJ" supplement is used instead of the "VC" supplement. 
+
+### Test 2 - Tooth growth vs dosage level
+
+Let's assume that there is no difference in tooth growth between dosages (the null hypothesis). So here, our alternative hypotheis is that tooth grows at a greater rate as the dosage increases.
+
+To this end, let's split the data by dosage.
+
+```{r}
+doseHalfLen <- ToothGrowth$len[ToothGrowth$dose==0.5]
+doseOneLen <- ToothGrowth$len[ToothGrowth$dose==1]
+doseTwoLen <- ToothGrowth$len[ToothGrowth$dose==2]
+```
+
+* One-sided independent t-test with unequal variance (doseHalfLen vs doseOneLen).
+
+```{r}
+t.test(doseHalfLen, doseOneLen, alternative = "less", paired = FALSE, var.equal = FALSE, conf.level = 0.95)
+```
+Here we get a p-value of $6.342\times 10^{-8},$ which is much much less than our tolerance level for error $\alpha = 0.05.$ Thus, we reject the null hypothesis and accept the alternative. In other words, there is a very strong evidence that tooth grows more when the dosage level is 1 than when it is at 0.5.
+
+* One-sided independent t-test with unequal variance (doseOneLen vs doseTwoLen).
+
+```{r}
+t.test(doseOneLen, doseTwoLen, alternative = "less", paired = FALSE, var.equal = FALSE, conf.level = 0.95)
+```
+Again, we get a p-value of $9.532\times 10^{-6},$ which is much much less than our tolerance level for error $\alpha = 0.05.$ Thus, we reject the null hypothesis and accept the alternative. In other words, there is a very strong evidence that tooth grows more when the dosage level is at 2 than when it is at 1.
+
+### Test 3 - Supplement "OJ" vs "VC" at dosage level 2
+
+The figure above suggested that the effects of the "OJ" and "VC" supplements are about the same when the dosage level is at 2. So we here would like to know if this is indeed the case. To this end we make the assumption that there is no difference in tooth growth between the supplements "OJ" and "VC" when the dosage level is at 2 (null hypothesis). The alternative is that there is a difference.
+
+First let's get the approprate subsets of the data set that reflect the effects of the two supplements at dosage level 2.
+
+```{r}
+OJdoseTwoLen <- ToothGrowth$len[ToothGrowth$supp=="OJ" & ToothGrowth$dose==2]
+VCdoseTwoLen <- ToothGrowth$len[ToothGrowth$supp=="VC" & ToothGrowth$dose==2]
+```
+
+We perform a two-sided independent t-test with unequal variance.
+
+```{r}
+t.test(OJdoseTwoLen, VCdoseTwoLen, alternative = "two.sided", paired = FALSE, var.equal = FALSE, conf.level = 0.95)
+```
+In this case, the p-value 0.9639 is much much higher than our default error tolerance level ($\alpha = 0.05$,) so, we don't reject the null hypothesis in this case, confirming what we suspected by observing the figure above - that the effect of the two supplements at dosage level 2 is about the same.  
