@@ -43,7 +43,9 @@ shinyUI(fluidPage(
                                  'Quadratic polynomial'='2',
                                  '4th degree polynomial'='4',
                                  '6th degree polynomial'='6',
-                                 '8th degree polynomial'='8')),
+                                 '8th degree polynomial'='8',
+                                 '10th degree polynomial'='10',
+                                 '12th degree polynomial'='12')),
        hr(),
        conditionalPanel(
               condition = "input.theTabs == 'summary'", 
