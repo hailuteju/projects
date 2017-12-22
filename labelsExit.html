@@ -62,9 +62,8 @@
 
 			var xScale = d3.scaleBand()
 							.domain(d3.range(dataset.length))
-							.rangeRound([0, w], 0.5);
-							//.rangeRound([0, w])
-							//.paddingInner(0.05);
+							.rangeRound([0, w])
+							.paddingInner(0.05);
 
 			var yScale = d3.scaleLinear()
 							.domain([0, d3.max(dataset, function(d) { return d.value; })])
