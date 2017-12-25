@@ -11,7 +11,8 @@
 	<body>
 
 		<p>
-			<input type="button" value="Do something for each circle">
+			<input type="button" value="Change each point">
+			<input type="button" value="Refresh">
 		</p>
 
 		<script type="text/javascript">
@@ -73,6 +74,7 @@
 			   .attr("r", 3)
 			   .attr("fill", "#b8c8d8");
 			
+
 			//Create X axis
 			svg.append("g")
 				.attr("class", "axis")
@@ -88,8 +90,34 @@
 			//On button click, execute a function for each circle in the allCircles selection
 			d3.selectAll("input")
 				.on("click", function() {
-					allCircles.each(freakOut);  //Hold on to your hats!
+					var view = d3.select(this).node().value;
+					switch (view) {
+
+						case "Change each point":
+
+							allCircles.each(freakOut);  //Hold on to your hats!
+
+						break;						
+
+						case "Refresh":
+
+							allCircles.each(sober);
+
+						break;
+				}
 				});
+
+
+			//Define the sober function
+			var sober = function(d, i){
+				d3.select(this)
+					.transition()
+					.delay(i * 5)
+					.duration(10)
+					.ease(d3.easeBackIn)
+					.attr("fill", "#b8c8d8")
+					.attr("r", 3);
+			};
 
 			//Define the freakOut function
 			var freakOut = function(d, i) {
@@ -105,10 +133,10 @@
 				d3.select(this)
 					.transition()
 					.delay(i * 25)
-					.duration(3000)
+					.duration(2000)
 					.ease(d3.easeElasticOut)
 					.attr("fill", colors[colorIndex])
-					.attr("r", 15);
+					.attr("r", 10);
 
 			};
 
