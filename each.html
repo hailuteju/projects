@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>D3: Using each() to run an arbitrary function on each element in a selection</title>
+		<script src="https://d3js.org/d3.v4.min.js"></script>
+		<style type="text/css">
+			/* No style rules here yet */
+		</style>
+	</head>
+	<body>
+
+		<p>
+			<input type="button" value="Change each point">
+			<input type="button" value="Refresh">
+		</p>
+
+		<script type="text/javascript">
+
+			//Width and height
+			var w = 600;
+			var h = 500;
+			var padding = 40;
+			
+			//Dynamic, random dataset
+			var dataset = [];					//Initialize empty array
+			var numDataPoints = 400;			//Number of dummy data points to create
+			var xRange = 1000;					//Max range of new x values
+			var yRange = 1000;					//Max range of new y values
+			for (var i = 0; i < numDataPoints; i++) {					//Loop numDataPoints times
+				var newNumber1 = Math.floor(Math.random() * xRange);	//New random integer
+				var newNumber2 = Math.floor(Math.random() * yRange);	//New random integer
+				dataset.push([newNumber1, newNumber2]);					//Add new number to array
+			}
+
+			//console.table(dataset);
+
+			//Create scale functions
+			var xScale = d3.scaleLinear()
+								 .domain([0, 1000])
+								 .range([padding, w - padding / 2]);
+
+			var yScale = d3.scaleLinear()
+								 .domain([0, 1000])
+								 .range([h - padding, padding / 2]);
+
+			//Define X axis
+			var xAxis = d3.axisBottom()
+							  .scale(xScale)
+							  .ticks(10);
+
+			//Define Y axis
+			var yAxis = d3.axisLeft()
+							  .scale(yScale)
+							  .ticks(10);
+
+			//Create SVG element
+			var svg = d3.select("body")
+						.append("svg")
+						.attr("width", w)
+						.attr("height", h);
+
+					svg.append("rect")
+					    .attr("width", "100%")
+					    .attr("height", "100%")
+					    .attr("fill", "#f8f8f8");
+
+			//Create circles
+			var allCircles = svg.selectAll("circle")
+			   .data(dataset)
+			   .enter()
+			   .append("circle")
+			   .attr("cx", function(d) {
+			   		return xScale(d[0]);
+			   })
+			   .attr("cy", function(d) {
+			   		return yScale(d[1]);
+			   })
+			   .attr("r", 3)
+			   .attr("fill", "#999");
+			
+
+			//Create X axis
+			svg.append("g")
+				.attr("class", "axis")
+				.attr("transform", "translate(0," + (h - padding) + ")")
+				.call(xAxis);
+			
+			//Create Y axis
+			svg.append("g")
+				.attr("class", "axis")
+				.attr("transform", "translate(" + padding + ",0)")
+				.call(yAxis);
+
+			//On button click, execute a function for each circle in the allCircles selection
+			d3.selectAll("input")
+				.on("click", function() {
+					var view = d3.select(this).node().value;
+					switch (view) {
+
+						case "Change each point":
+
+							allCircles.each(freakOut);  //Hold on to your hats!
+
+						break;						
+
+						case "Refresh":
+
+							allCircles.each(sober);
+
+						break;
+				}
+				});
+
+
+			//Define the sober function
+			var sober = function(d, i){
+				d3.select(this)
+					.transition()
+					.delay(i * 5)
+					.duration(10)
+					.ease(d3.easeBackIn)
+					.attr("fill", "#999")
+					.attr("r", 3);
+			};
+
+			//Define the freakOut function
+			var freakOut = function(d, i) {
+
+				//Since this function will be called by 'each()',
+				//it will be aware of each element on which it operates.
+				//The 'this' context will be updated, and d and i will
+				//be populated with the associated values.
+
+				var colors = d3.schemeCategory20;
+				var colorIndex = Math.round(Math.random() * 20);
+
+				d3.select(this)
+					.transition()
+					.delay(i * 25)
+					.duration(2000)
+					.ease(d3.easeElasticOut)
+					.attr("fill", colors[colorIndex])
+					.attr("r", 25);
+
+			};
+
+		</script>
+	</body>
+</html>

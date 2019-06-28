@@ -1,0 +1,84 @@
+---
+title: "About Me"
+author: "Hailu Teju"
+date: "November 12, 2017"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+```{r}
+
+library(leaflet)
+library(geosphere)
+# 
+# myIcon <- makeIcon("./Hailu.Teju.png",
+#                    iconWidth = 32*215/230, iconHeight = 32,
+#                    iconAnchorX = 32*215/230/2, iconAnchorY =16)
+# myLatLong <- data.frame(
+#         lat = c(7.214265, 7.213, 7.1398, 7.1386, 9.0338, 45.6495, 43.0008, 37.5490),
+#         lng = c(40.578, 40.5548, 40.7055, 40.7168, 38.7637, 13.7768, -78.7890, -77.4534))
+# 
+# myLatLong %>% leaflet() %>% addTiles() %>% 
+# addMarkers(icon=myIcon,
+#    popup="Hailu Teju's Place of Birth!")
+# n <- nrow(myLatLong)
+# 
+# for (j in 1:n-1) {
+# 
+#         inter <- gcIntermediate(c(myLatLong$lng[j], myLatLong$lat[j]), c(myLatLong$lng[j+1], myLatLong$lat[j+1]), n=100, addStartEnd=TRUE,
+#                                 sp=TRUE)
+#         
+#         lines(inter, col="blue", lwd=0.5, lty=0.5)
+#         }
+
+ # gcIntermediate(c(38.7637,9.0338), c(13.7637,45.6495),
+ #               n=100, 
+ #               addStartEnd=TRUE,
+ #               sp=TRUE) %>%   
+# leaflet() %>% addTiles() %>% addPolylines()
+# addMarkers(icon=myIcon,
+#    popup="Hailu Teju's Place of Birth!")
+
+
+
+
+
+# %>%  addPopups(lat=7.21486, lng=40.578, popup="Hailu Teju's Birth Place!",options=popupOptions(closeButton=FALSE))
+
+
+# myPOB
+# 
+# 
+# # myLatLong <- data.frame(
+#         lat = c(7.214265, 7.213, 7.1398, 7.1386, 9.0338, 45.6495, 43.0008, 37.5490),
+#         lng = c(40.578, 40.5548, 40.7055, 40.7168, 38.7637, 13.7768, -78.7890, -77.4534))
+# 
+# 
+# install.packages("leaflet") # Download and install leaflet package
+library(leaflet) # Loads the leaflet library for use
+# Creating points for the places I flew to
+# stop_points <- data.frame(location = c("London","Hong Kong","Sydney","Dubai"),
+#    long = c(-0.460,113.918,151.171,55.354),
+#    lat = c(51.470,22.308,-33.936,25.262))
+#    
+stop_points <- data.frame(location = c("Place of birth","Elementary School","Middle School","High School", "College. Also taught for 3 years here", "<a href='https://www.ictp.it/'>One year at ICTP - in the beautiful Trieste, Italy</a>", "Grad School at SUNY Buffalo - by Niagra Falls", "Currently working here in Richmond, VA"),
+       lat = c(7.214265, 7.213, 7.1398, 7.1386, 9.0338, 45.6495, 43.0008, 37.5490),         long = c(40.578, 40.5548, 40.7055, 40.7168, 38.7637, 13.7768, -78.7890, -77.4534))
+# Get the rows for all the flight stops I took to get to Sydney
+# flight_to_sydney <- stop_points[stop_points$location %in% c("London", "Hong Kong", "Sydney"),]
+
+# # No stopover for Dubai, direct flight so only getting start and end
+# flight_to_dubai <- stop_points[stop_points$location %in% c("London", "Dubai"),]
+# # Call the leaflet package to add the stops and the flight paths.
+m <- leaflet() %>%
+   addTiles() %>% # Add default OpenStreetMap map tiles
+        addMarkers(lng=stop_points$long, lat=stop_points$lat, clusterOptions = markerClusterOptions(),popup=stop_points$location) %>%
+   addPolylines(lng=stop_points$long, lat=stop_points$lat, color = "blue") 
+# %>%
+   # addPolylines(lng=flight_to_dubai$long, lat=flight_to_dubai$lat, color = "green")
+m # Print the map
+# 
+# 
+```

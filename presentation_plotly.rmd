@@ -1,0 +1,81 @@
+---
+title: "Week 3 Assignment"
+author: "Hailu Teju"
+date: "November 18, 2017"
+output: ioslides_presentation
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+## Iris Data
+
+```{r, comment="", echo=TRUE}
+
+str(iris)
+```
+
+## Interactive Plot - using plotly
+
+In the next few slides we generate scatter plots of Petal.Length vs Sepal.Length using plotly and the following plot options:
+
+- set color equal to the factor variable Species
+- set color equal to the continuous variable Sepal.Width
+- scaling the size of the points in terms of Petal.Width
+
+## Colored using Species 
+
+```{r, message=FALSE}
+library(plotly)
+(plot_ly(data=iris, x=~Sepal.Length, y=~Petal.Length, type="scatter", color=~Species))
+```
+
+## Colored using Sepal.Width 
+
+```{r, message=FALSE}
+library(plotly)
+(plot_ly(data=iris, x=~Sepal.Length, y=~Petal.Length, type="scatter", color=~Sepal.Width))
+```
+
+## Scaled using Petal.Width 
+
+```{r, message=FALSE}
+library(plotly)
+(plot_ly(data=iris, x=~Sepal.Length, y=~Petal.Length, type="scatter", size=~Petal.Width))
+```
+
+## Box-plot
+
+```{r}
+
+(plot_ly(iris, x = ~Species, y=~Sepal.Length, color = ~Species, type = "box"))
+```
+
+## 3D Stuff
+
+```{r, message=FALSE}
+ ucount <- 300
+ vcount <- 100
+
+x <- c()
+y <- c()
+z <- c()
+c <- c()
+
+for (i in 1:ucount) {
+        for (j in 1:vcount ){
+          x <- c(x, 2*(1-exp(i/(300)))*cos(i/300 * 15.9)*cos(j/32)*cos(j/32))
+          y <- c(y, 2*(-1 + exp(i/(300)))*sin(i/300 * 15.9)*cos(j/32)*cos(j/32))
+          z <- c(z, 1-exp(2*i/300)-sin(j/16)+exp(i/300)*sin(j/16))
+          c <- c(c, i)
+        }
+}
+
+data <- data.frame(x, y, z, c)
+
+(plot_ly(data, x = ~x, y = ~y, z = ~z, type = 'scatter3d', mode = 'lines',
+        line = list(width = 5, color = ~c, colorscale = "Viridis"))) 
+```
+
+## The End!

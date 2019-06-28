@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>Dynamic labels: Add and Remove data in v4 (sample dataset from Scott Murray's excellent book Interactive Data Visualization for the Web)</title>
+		<script src="https://d3js.org/d3.v4.min.js"></script>
+		<style type="text/css">
+
+		body {
+		  font-family: Futura;
+		  font-size: 16px;
+			fill: white;
+			background-color: white;
+
+		}
+
+		h1 {
+			font-family: Futura;
+			font-size: 24px;
+			fill: white;
+		}
+
+
+
+		</style>
+	</head>
+	<body>
+
+	<div style="margin-bottom: 20px">
+	<button id="add" style="color:dodgerblue;">add data value</button> 
+	<button id="remove" style="color: purple">remove data value</button> 
+	</div>
+
+
+		<script type="text/javascript">
+
+
+			var w = 600,
+					h = 250,
+					centered;
+
+			var dataset = [ { key: 0, value: 5 },
+							{ key: 1, value: 10 },
+							{ key: 2, value: 13 },
+							{ key: 3, value: 19 },
+							{ key: 4, value: 21 },
+							{ key: 5, value: 25 },
+							{ key: 6, value: 22 },
+							{ key: 7, value: 18 },
+							{ key: 8, value: 15 },
+							{ key: 9, value: 13 },
+							{ key: 10, value: 11 },
+							{ key: 11, value: 12 },
+							{ key: 12, value: 15 },
+							{ key: 13, value: 20 },
+							{ key: 14, value: 18 },
+							{ key: 15, value: 17 },
+							{ key: 16, value: 16 },
+							{ key: 17, value: 18 },
+							{ key: 18, value: 23 },
+							{ key: 19, value: 25 } ];
+
+			var xScale = d3.scaleBand()
+							.domain(d3.range(dataset.length))
+							.rangeRound([0, w])
+							.paddingInner(0.05);
+
+			var yScale = d3.scaleLinear()
+							.domain([0, d3.max(dataset, function(d) { return d.value; })])
+							.range([0, h - 20]);
+
+
+			//Define key function, to be used when binding data
+			var key = function(d) {
+				return d.key;
+			};
+
+			//Create SVG element
+			var svg = d3.select("body")
+						.append("svg")
+						.attr("width", w)
+						.attr("height", h);
+
+			//Create bars
+			svg.selectAll("rect")
+			   .data(dataset, key)  //Bind data with custom key function
+			   .enter()
+			   .append("rect")
+			   .attr("x", function(d, i) {
+			   		return xScale(i);
+			   })
+			   .attr("y", function(d) {
+			   		return h - yScale(d.value);
+			   })
+			   .attr("width", xScale.bandwidth())
+			   .attr("height", function(d) {
+			   		return yScale(d.value);
+			   })
+			   .attr("fill", function(d) {
+					return "rgb(50, " + (d.value * 10) + ", 100 )";
+			   });
+
+			//Create labels   
+			svg.selectAll("text")
+			   .data(dataset, key)  //Bind data with custom key function
+			   .enter()
+			   .append("text")
+			   .text(function(d) {
+			   		return d.value;
+			   })
+			   .attr("text-anchor", "middle")
+			   .attr("x", function(d, i) {
+			   		return xScale(i) + xScale.bandwidth() / 2;
+			   })
+			   .attr("y", function(d) {
+			   		return h - yScale(d.value) + 14;
+			   })
+			   .attr("font-family", "Futura")
+			   .attr("font-size", "12px")
+			   .attr("fill", "white");
+
+
+			//On click, update with new data
+			d3.selectAll("button")
+				.on("click", function() {
+
+
+					var paragraphID = d3.select(this).attr("id");
+
+					//Add one value to dataset if add is clicked
+					if (paragraphID == "add") {
+
+						var minValue = 2;
+						var maxValue = 25 - minValue;
+						var newNumber = Math.floor(Math.random() * maxValue) + minValue;
+						var lastKeyValue = dataset[dataset.length - 1].key;
+						//console.log(lastKeyValue);
+						//Add key - value pair to dataset
+						dataset.push({
+							key: lastKeyValue + 1,
+							value: newNumber
+						});
+					} else {
+						//Remove one value from dataset
+						dataset.shift();
+					}
+
+					//Update scale domain
+					xScale.domain(d3.range(dataset.length));
+					yScale.domain([0, d3.max(dataset, function(d) { return d.value; })]);
+
+					//Select ...
+					var bars = svg.selectAll("rect")
+						.data(dataset, key);  //Bind data with cutrom key function
+
+					//Enter...
+					bars.enter()
+						.append("rect")
+						.attr("x", w)
+						.attr("y", function(d) {
+							return h - yScale(d.value);
+						})
+						.attr("width", xScale.bandwidth())
+						.attr("height", function(d) {
+							return yScale(d.value);
+						})
+						.attr("fill", function(d) {
+							return "rgb(50, " + (d.value * 10) + ", 100 )";
+						})
+
+						.merge(bars)   //Update...
+						.transition()
+						.duration(500)
+						.attr("x", function(d, i) {
+							return xScale(i);
+						})
+						.attr("y", function(d) {
+							return h - yScale(d.value);
+						})
+						.attr("width", xScale.bandwidth())
+						.attr("height", function(d) {
+							return yScale(d.value);
+						});
+
+				    //Exit...
+					bars.exit()
+						.transition()
+						.ease(d3.easePoly)
+						.duration(500)
+						.attr("x", -xScale.bandwidth())
+						//  <-- Exit stage left
+						.remove();
+
+
+				    //Update all labels
+					var labels = svg.selectAll("text")
+						.data(dataset, key);  //Bind data with custom key function
+
+
+					labels.enter()
+						.append("text")
+						.text(function(d) {
+							return d.value;
+						})
+						.attr("text-anchor", "middle")
+						.attr("x", w - xScale.bandwidth()/2)
+						.attr("y", function(d) {
+							return h - yScale(d.value) + 14;
+						})
+						.attr("font-family", "Futura")
+						.attr("font-size", "12px")
+						.attr("fill", "white");
+
+
+					labels.transition()
+						.duration(500)
+						.ease(d3.easePoly)
+						.attr("x", function(d, i) {
+							return xScale(i) + xScale.bandwidth() / 2;
+						});
+
+
+					labels.exit()
+						.transition()
+						.duration(500)
+						.attr("x", -xScale.bandwidth())
+						.remove();
+
+				});
+
+
+		</script>
+	</body>
+</html>
