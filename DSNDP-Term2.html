@@ -3,7 +3,7 @@
 <head><meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>DSNDP-Term2</title><script type="text/javascript" src="http://me.kis.v2.scr.kaspersky-labs.com/FD126C42-EBFA-4E12-B309-BB3FDD723AC1/main.js?attr=kz4Cgpv6wHCq-T5UQDe_0Oo7xbaInrkAPdAUV-UcVHIjXtxh6XtU28i3wbYkcdBAczvamqisvxH7xKSLbFzC_7gPFIvh__EPq0TYqflf8Pz68QTiOFesxetA2m8i29d_oA2lkrahGE6spt5s0rCf-_c7jUKecLWe6uf--VOi-fSq5kYs2wn20wrmjz0KXmJn" charset="UTF-8"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
+<title>DSNDP-Term2</title><script type="text/javascript" src="http://me.kis.v2.scr.kaspersky-labs.com/FD126C42-EBFA-4E12-B309-BB3FDD723AC1/main.js?attr=XzedZ5o7UHbony_xe-4m6n9u1FPOWRcT60pNeFjHrCO6pwykY78oxcVVaaAhotAIjWp0WtmtmV3Ut0yP_oUE-9oeDXfmcBTKSYMNbgvqb0_KCU1L4MSJlPpP9D-6vNztRAkZ49j0wOHVYNwQ7qaHyFtglglkmHvux2K9HmXY9WZHRMIbCo_jkYqlTZY8VHsC" charset="UTF-8"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
 
 
 
@@ -14263,12 +14263,15 @@ a.anchor-link {
 <hr>
 <h2 id="Overview-">Overview <a class="anchor" id="overview" /><a class="anchor-link" href="#Overview-">&#182;</a></h2><p><a href="#links">Links</a><br>
 <a href="#crisp-dm">CRISP-DM</a><br>
+<a href="#software-engineering-practices">Software Engineering Practices</a><br>
 <a href="#modular-code">Wrtiting Modular Code</a><br>
 <a href="#get-data-programmatic">Getting Data Programmatically</a><br>
 <a href="#beautiful-soup">BeautifulSoup</a><br>
 <a href="#unit-tests">Unit Tests</a><br>
+<a href="#test-driven-dev">Test-Driven Development and Data Science</a><br>
 <a href="#code-review">Questions to Ask Yourself When Conducting a Code Review</a><br>
-<a href="#oop">Object-Oriented Programming</a><br>
+<a href="#code-review-tips">Tips for Conducting a Code Review</a><br>
+<a href="#oop">Object-Oriented Programming (OOP)</a><br>
 <a href="#making-package">Making a Package</a><br>
 <a href="#venv">Virtual Environments</a><br>
 <a href="#github">Contributing to a GitHub project</a><br>
@@ -14279,7 +14282,8 @@ a.anchor-link {
 <a href="#semantic-versioning">Semantic Versioning</a><br>
 <a href="#flask">Flask</a><br>
 <a href="#deploy">Deploying your app</a><br>
-<a href="#medium">Medium: Getting Started Posts and Links</a></p>
+<a href="#medium">Medium: Getting Started Posts and Links</a><br>
+<a href="#project-documentation">Project Documentation</a></p>
 
 </div>
 </div>
@@ -14303,8 +14307,13 @@ a.anchor-link {
 <a href="https://test.pypi.org">Test PyPI</a><br>
 Filling missing values | <a href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.fillna.html">Pandas</a>  | <a href="https://scikit-learn.org/stable/modules/preprocessing.html">sklearn.preprocessing.library</a> |<br>
 <a href="https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.select_dtypes.html">Get a subset of a DataFrame’s columns based on the column dtypes</a><br>
-<a href="https://pandas.pydata.org/pandas-docs/version/0.17.0/generated/pandas.get_dummies.html">pandas.get_dummies</a><br>
-<a href="https://www.python.org/dev/peps/pep-0484/">PEP 484</a></p>
+<a href="https://pandas.pydata.org/pandas-docs/version/0.17.0/generated/pandas.get_dummies.html">pandas.get_dummies</a></p>
+<p><a href="https://www.python.org/dev/peps/pep-0484/">PEP 484 - Type Hints</a><br>
+<a href="https://www.python.org/dev/peps/pep-0257/">PEP 257 - Docstring Conventions</a><br>
+<a href="https://numpydoc.readthedocs.io/en/latest/format.html">Numpy Docstring Guide</a><br>
+<a href="https://stackoverflow.com/questions/8929284/what-makes-sets-faster-than-lists/8929445#8929445">What makes sets faster than lists?</a></p>
+<p><a href="https://realpython.com/python-string-formatting/">Python String Formatting Best Practices</a><br>
+<a href="https://en.wikipedia.org/wiki/Factory_(object-oriented_programming">Factory (OOP)</a>)</p>
 <p><strong>CSS</strong><br>
 <a href="https://www.w3.org/Style/CSS20/history.html">History of CSS</a><br>
 <a href="https://www.w3schools.com/cssref/pr_text_text-transform.asp">https://www.w3schools.com/cssref/pr_text_text-transform.asp</a><br>
@@ -14452,12 +14461,63 @@ How well can we predict an individual's job satisfaction? What aspects correlate
 </div>
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h1 id="Software-Engineering-Practices-">Software Engineering Practices <a class="anchor" id="software-engineering-practices" /><a class="anchor-link" href="#Software-Engineering-Practices-">&#182;</a></h1><h3 id="Software-Engineering-Practices-Part-I">Software Engineering Practices Part I<a class="anchor-link" href="#Software-Engineering-Practices-Part-I">&#182;</a></h3><blockquote><ul>
+<li>Write clean and modular code    </li>
+<li>Improve code efficiency     </li>
+<li>Add effective documentation     </li>
+<li>Use version control    </li>
+<li>Testing     </li>
+<li>Logging     </li>
+<li>Code reviews</li>
+</ul>
+</blockquote>
+<p><strong>Clean:</strong> code is clean when it is <code>readable</code>, <code>simple</code>, and <code>concise</code></p>
+<p><strong>Modular:</strong> your code is modular if it is logically broken up into <strong>functions:</strong></p>
+<div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">function_name</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">):</span>
+       <span class="o">...</span>
+</pre></div>
+<p>and <strong>modules</strong>:</p>
+<div class="highlight"><pre><span></span><span class="n">module_name</span><span class="o">.</span><span class="n">py</span>
+</pre></div>
+<p><strong>Refactoring:</strong> code refactoring is to improve internal structure without changing external functionality</p>
+<h3 id="Why-Refactor?">Why Refactor?<a class="anchor-link" href="#Why-Refactor?">&#182;</a></h3><ul>
+<li><p>Reduce workload in long run</p>
+</li>
+<li><p>Easier to maintain code</p>
+</li>
+<li><p>Reuse more of your code</p>
+</li>
+<li><p>Become a better developer</p>
+</li>
+</ul>
+<p><a href="https://www.python.org/dev/peps/pep-0008/?#code-lay-out">PEP 8 guidelines for code layout</a></p>
+<h3 id="Writing-Clean-Code">Writing Clean Code<a class="anchor-link" href="#Writing-Clean-Code">&#182;</a></h3><p><strong>Tip: Use meaningful names</strong></p>
+<blockquote><p>Be descriptive and imply type<br>
+Be consistent but clearly differentiate<br>
+Avoid abbrevations and especially single letters (Exception: counters and common math variables)<br>
+Long names != descriptive names</p>
+</blockquote>
+<p>Example (long names do not always mean good):</p>
+<div class="highlight"><pre><span></span><span class="c1"># bad</span>
+<span class="k">def</span> <span class="nf">count_unique_values_of_names_list_with_set</span><span class="p">(</span><span class="n">names_list</span><span class="p">):</span>
+    <span class="k">return</span> <span class="nb">len</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="n">names_list</span><span class="p">))</span>
+
+
+<span class="c1"># better</span>
+<span class="k">def</span> <span class="nf">count_unique_values</span><span class="p">(</span><span class="n">arr</span><span class="p">):</span>
+    <span class="k">return</span> <span class="nb">len</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="n">arr</span><span class="p">))</span>
+</pre></div>
+
+</div>
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <h2 id="Writing-Modular-Code--">Writing Modular Code  <a class="anchor" id="modular-code" /><a class="anchor-link" href="#Writing-Modular-Code--">&#182;</a></h2>
 </div>
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[2]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[4]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">math</span>
@@ -14474,8 +14534,12 @@ How well can we predict an individual's job satisfaction? What aspects correlate
 <span class="n">curved_10</span> <span class="o">=</span> <span class="n">flat_curve</span><span class="p">(</span><span class="n">test_scores</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
 <span class="n">curved_sqrt</span> <span class="o">=</span> <span class="n">square_root_curve</span><span class="p">(</span><span class="n">test_scores</span><span class="p">)</span>
 
-<span class="k">for</span> <span class="n">score_list</span> <span class="ow">in</span> <span class="n">test_scores</span><span class="p">,</span> <span class="n">curved_5</span><span class="p">,</span> <span class="n">curved_10</span><span class="p">,</span> <span class="n">curved_sqrt</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">score_list</span><span class="p">))</span>
+<span class="n">score_kind</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;test_score&#39;</span><span class="p">,</span> <span class="s1">&#39;curved_5&#39;</span><span class="p">,</span> <span class="s1">&#39;curved_10&#39;</span><span class="p">,</span> <span class="s1">&#39;curved_sqrt&#39;</span><span class="p">)</span>
+<span class="n">score_list</span> <span class="o">=</span> <span class="p">(</span><span class="n">test_scores</span><span class="p">,</span> <span class="n">curved_5</span><span class="p">,</span> <span class="n">curved_10</span><span class="p">,</span> <span class="n">curved_sqrt</span><span class="p">)</span>
+
+<span class="c1"># for score_list in test_scores, curved_5, curved_10, curved_sqrt:</span>
+<span class="k">for</span> <span class="n">kind</span><span class="p">,</span> <span class="n">scores</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">score_kind</span><span class="p">,</span> <span class="n">score_list</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">kind</span><span class="o">.</span><span class="n">rjust</span><span class="p">(</span><span class="mi">11</span><span class="p">)</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">scores</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 </pre></div>
 
      </div>
@@ -14495,10 +14559,10 @@ How well can we predict an individual's job satisfaction? What aspects correlate
 
 
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
-<pre>87.4
-92.4
-97.4
-93.44776840374746
+<pre> test_score: 87.4
+   curved_5: 92.4
+  curved_10: 97.4
+curved_sqrt: 93.44776840374746
 </pre>
 </div>
 </div>
@@ -14636,6 +14700,39 @@ How well can we predict an individual's job satisfaction? What aspects correlate
 
 </div>
 
+</div>
+
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h3 id="Efficient-Code">Efficient Code<a class="anchor-link" href="#Efficient-Code">&#182;</a></h3><ul>
+<li><p>Reducing run time</p>
+</li>
+<li><p>Reducing space in memory</p>
+</li>
+</ul>
+
+</div>
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h3 id="Why-Documentation?">Why Documentation?<a class="anchor-link" href="#Why-Documentation?">&#182;</a></h3><ul>
+<li>Clarify complex parts of</li>
+</ul>
+
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span> 
+</pre></div>
+
+     </div>
+</div>
+</div>
 </div>
 
 </div>
@@ -15089,8 +15186,20 @@ dtype: object</pre>
 </div>
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h2 id="Unit-Tests-">Unit Tests <a class="anchor" id="unit-tests" /><a class="anchor-link" href="#Unit-Tests-">&#182;</a></h2><p><code>pip install -U pytest</code></p>
-<p><em>In order to use pytest to recognize your test file and test your code, the test file should be named <code>test_&lt;something&gt;</code> and the functions themselves should be named <code>test_&lt;something&gt;</code></em></p>
+<h2 id="Unit-Tests-">Unit Tests <a class="anchor" id="unit-tests" /><a class="anchor-link" href="#Unit-Tests-">&#182;</a></h2><blockquote><p>Test that covers a small unit of code, usually a function independently from the rest of the program<br>
+<a href="https://docs.pytest.org">pytest</a><br>
+<a href="https://www.fullstackpython.com/integration-testing.html">Integration Testing</a></p>
+</blockquote>
+<p><code>pip install -U pytest</code></p>
+<h4 id="Unit-Testing-Tools">Unit Testing Tools<a class="anchor-link" href="#Unit-Testing-Tools">&#182;</a></h4><p>To install <code>pytest</code>, run <code>pip install -U pytest</code> in your terminal. You can see more information on getting started <a href="https://docs.pytest.org/en/latest/getting-started.html">here</a>.</p>
+<ul>
+<li>Create a test file starting with <code>test_</code>.   </li>
+<li>Define unit test functions that start with <code>test_</code> inside the test file.   </li>
+<li>Enter <code>pytest</code> into your terminal in the directory of your test file and it detects these tests for you.  </li>
+</ul>
+<p><code>test_</code> is the default; if you wish to change this, you can learn how in this <code>pytest</code> <a href="https://docs.pytest.org/en/latest/explanation/goodpractices.html#test-discovery">configuration</a>.</p>
+<p>In the test output, periods represent successful unit tests and Fs represent failed unit tests. Since all you see is which test functions failed, it's wise to have only one <code>assert</code> statement per test. Otherwise, you won't know exactly how many tests failed or which tests failed.</p>
+<p>Your test won't be stopped by failed <code>assert</code> statements, but it will stop if you have syntax errors.</p>
 
 </div>
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
@@ -15190,6 +15299,310 @@ dtype: object</pre>
 </div>
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h1 id="Test-Driven-Development-and-Data-Science-">Test-Driven Development and Data Science <a class="anchor" id="test-driven-dev" /><a class="anchor-link" href="#Test-Driven-Development-and-Data-Science-">&#182;</a></h1><ul>
+<li><p><em>Test-driven development:</em> Writing tests before you write the code that’s being tested. Your test fails at first, and you know you’ve finished implementing a task when the test passes.</p>
+</li>
+<li><p>Tests can check for different scenarios and edge cases before you even start to write your function. When start implementing your function, you can run the test to get immediate feedback on whether it works or not as you tweak your function.</p>
+</li>
+<li><p>When refactoring or adding to your code, tests help you rest assured that the rest of your code didn't break while you were making those changes. Tests also helps ensure that your function behavior is repeatable, regardless of external parameters such as hardware and time.</p>
+</li>
+</ul>
+<p>Test-driven development for data science is relatively new and is experiencing a lot of experimentation and breakthroughs. You can learn more about it by exploring the following resources.</p>
+<ul>
+<li><a href="https://www.linkedin.com/pulse/data-science-test-driven-development-sam-savage/">Data Science TDD</a> | <a href="https://www.linkedin.com/pulse/agile-data-scientists-do-scale-sam-savage">Agile Data Scientists Do Scale</a>   </li>
+<li><a href="https://tanzu.vmware.com/content/pivotal-engineering-journal">TDD for Data Science</a>  </li>
+<li><a href="https://medium.com/uk-hydrographic-office/test-driven-development-is-essential-for-good-data-science-heres-why-db7975a03a44">TDD is Essential for Good Data Science Here's Why</a>  </li>
+<li><a href="https://docs.python-guide.org/writing/tests/">Testing Your Code</a> (general python TDD)</li>
+</ul>
+
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[32]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">%%writefile</span> Data_Engineering/Unit_Test2/email_validator.py
+
+<span class="c1"># def validate_email(email):</span>
+<span class="c1">#     if email.count(&#39;@&#39;) == 1 and email.count(&#39;.&#39;) == 1:</span>
+<span class="c1">#         return True</span>
+<span class="c1">#     return False</span>
+
+<span class="kn">import</span> <span class="nn">re</span>
+
+<span class="n">pattern</span> <span class="o">=</span> <span class="sa">r</span><span class="s2">&quot;^[a-zA-Z0-9.!#$%&amp;&#39;*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[&quot;</span> \
+          <span class="sa">r</span><span class="s2">&quot;a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$&quot;</span>
+<span class="n">regex</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="n">pattern</span><span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">validate_email</span><span class="p">(</span><span class="n">email</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">regex</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="n">email</span><span class="p">)</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+<div class="jp-Cell-outputWrapper">
+
+
+<div class="jp-OutputArea jp-Cell-outputArea">
+
+<div class="jp-OutputArea-child">
+
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
+<pre>Writing Data_Engineering/Unit_Test2/email_validator.py
+</pre>
+</div>
+</div>
+
+</div>
+
+</div>
+
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[33]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">%%writefile</span> Data_Engineering/Unit_Test2/test_email_validator.py
+<span class="kn">from</span> <span class="nn">email_validator</span> <span class="kn">import</span> <span class="n">validate_email</span>
+
+<span class="k">def</span> <span class="nf">test_validate_email_1</span><span class="p">():</span>
+    <span class="k">assert</span> <span class="n">validate_email</span><span class="p">(</span><span class="s1">&#39;hteju2001@gmail.com&#39;</span><span class="p">)</span>
+    
+<span class="k">def</span> <span class="nf">test_validate_email_2</span><span class="p">():</span>
+    <span class="k">assert</span> <span class="n">validate_email</span><span class="p">(</span><span class="s1">&#39;andrew@.c@om&#39;</span><span class="p">)</span>
+    
+<span class="k">def</span> <span class="nf">test_validate_email_3</span><span class="p">():</span>
+    <span class="k">assert</span> <span class="n">validate_email</span><span class="p">(</span><span class="s1">&#39;andrew@.com&#39;</span><span class="p">)</span>
+    
+<span class="k">def</span> <span class="nf">test_validate_email_4</span><span class="p">():</span>
+    <span class="k">assert</span> <span class="n">validate_email</span><span class="p">(</span><span class="s1">&#39;andrew@udacity.com&#39;</span><span class="p">)</span>
+    
+<span class="k">def</span> <span class="nf">test_validate_email_5</span><span class="p">():</span>
+    <span class="k">assert</span> <span class="n">validate_email</span><span class="p">(</span><span class="s1">&#39;hteju2001@comcast.net&#39;</span><span class="p">)</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+<div class="jp-Cell-outputWrapper">
+
+
+<div class="jp-OutputArea jp-Cell-outputArea">
+
+<div class="jp-OutputArea-child">
+
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
+<pre>Writing Data_Engineering/Unit_Test2/test_email_validator.py
+</pre>
+</div>
+</div>
+
+</div>
+
+</div>
+
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[27]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># !pip3 install -U pytest</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[31]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="o">!</span>pytest
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+<div class="jp-Cell-outputWrapper">
+
+
+<div class="jp-OutputArea jp-Cell-outputArea">
+
+<div class="jp-OutputArea-child">
+
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
+<pre>============================= test session starts =============================
+platform win32 -- Python 3.8.5, pytest-6.2.4, py-1.9.0, pluggy-0.13.1
+rootdir: C:\Users\hailu\OneDrive\Documents\udacity\DataScientistNanodegree\Term2
+collected 11 items
+
+test_nearest.py ....                                                     [ 36%]
+Data_Engineering\Unit_Test\test_compute_launch.py F...                   [ 72%]
+Data_Engineering\Unit_Test2\test_email_validator.py ..F                  [100%]
+
+================================== FAILURES ===================================
+__________________________ test_days_until_launch_4 ___________________________
+
+    def test_days_until_launch_4():
+&gt;       assert (days_until_launch(23, 26) == 4)
+E       assert 3 == 4
+E        +  where 3 = days_until_launch(23, 26)
+
+Data_Engineering\Unit_Test\test_compute_launch.py:5: AssertionError
+____________________________ test_validate_email_3 ____________________________
+
+    def test_validate_email_3():
+&gt;       assert validate_email(&#39;andrew@.com&#39;) == False
+E       AssertionError: assert True == False
+E        +  where True = validate_email(&#39;andrew@.com&#39;)
+
+Data_Engineering\Unit_Test2\test_email_validator.py:10: AssertionError
+============================== warnings summary ===============================
+..\..\..\..\..\anaconda3\lib\site-packages\pyreadline\py3k_compat.py:8
+  c:\users\hailu\anaconda3\lib\site-packages\pyreadline\py3k_compat.py:8: DeprecationWarning: Using or importing the ABCs from &#39;collections&#39; instead of from &#39;collections.abc&#39; is deprecated since Python 3.3, and in 3.9 it will stop working
+    return isinstance(x, collections.Callable)
+
+-- Docs: https://docs.pytest.org/en/stable/warnings.html
+=========================== short test summary info ===========================
+FAILED Data_Engineering/Unit_Test/test_compute_launch.py::test_days_until_launch_4
+FAILED Data_Engineering/Unit_Test2/test_email_validator.py::test_validate_email_3
+=================== 2 failed, 9 passed, 1 warning in 1.14s ====================
+</pre>
+</div>
+</div>
+
+</div>
+
+</div>
+
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[47]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">re</span>
+
+<span class="n">pattern</span> <span class="o">=</span> <span class="sa">r</span><span class="s2">&quot;^[a-zA-Z0-9.!#$%&amp;&#39;*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[&quot;</span> \
+          <span class="sa">r</span><span class="s2">&quot;a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$&quot;</span>
+<span class="n">regex</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="n">pattern</span><span class="p">)</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[49]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">regex</span><span class="o">.</span><span class="n">match</span><span class="p">(</span><span class="s1">&#39;hteju2001@.com&#39;</span><span class="p">)</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+<div class="jp-Cell-outputWrapper">
+
+
+<div class="jp-OutputArea jp-Cell-outputArea">
+
+<div class="jp-OutputArea-child">
+
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[49]:</div>
+
+
+
+
+<div class="jp-RenderedText jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/plain">
+<pre>False</pre>
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h1 id="Logging-">Logging <a class="anchor" id="logging" /><a class="anchor-link" href="#Logging-">&#182;</a></h1><p>Logging is the process of recording messages to describe events that have occurred while running your software.</p>
+<p>Logging is valuable for understanding the events that occur while running your program. For example, if you run your model overnight and the results the following morning are not what you expect, log messages can help you understand more about the context in those results occurred.</p>
+<h3 id="Tips:">Tips:<a class="anchor-link" href="#Tips:">&#182;</a></h3><ul>
+<li>Be professional and clear  <blockquote><p>Bad: Hmmm... this isn't working???<br>
+Bad: idk.... :(<br>
+Good: Couldn't parse file.</p>
+</blockquote>
+</li>
+</ul>
+<ul>
+<li><p>Be concise and use normal capitalization</p>
+<blockquote><p>Bad: Start Product Recommendation Process<br>
+Bad: We have completed the steps necessary and will now proceed with the recommendation process for the records in our product database.<br>
+Good: Generating product recommendations.</p>
+</blockquote>
+</li>
+<li><p>Choose the appropriate level for logging</p>
+<blockquote><p><em>Debug</em>: Use this level for anything that happens in the program. <em>Error</em>: Use this level to record any error that occurs. <em>Info</em>: Use this level to record all actions that are user driven or system specific, such as regularly scheduled operations.</p>
+</blockquote>
+</li>
+<li><p>Provide any useful information</p>
+<blockquote><p>Bad: Failed to read location data<br>
+Good: Failed to read location data: store_id 8324971</p>
+</blockquote>
+</li>
+</ul>
+<h2 id="Code-Reviews">Code Reviews<a class="anchor-link" href="#Code-Reviews">&#182;</a></h2><p>Code reviews benefit everyone in a team to promote best programming practices and prepare code for production.</p>
+<ul>
+<li><a href="https://github.com/lyst/MakingLyst/tree/master/code-reviews">Code reviews</a>    </li>
+<li><p><a href="https://www.kevinlondon.com/2015/05/05/code-review-best-practices.html">Code review best practices</a></p>
+</li>
+<li><p>Additional References</p>
+<blockquote><p><a href="">Clean Code</a> book by Robert C. Martin<br>
+<a href="">Regactoring</a> book by Martin Fowler, et. al.<br>
+<a href="https://www.youtube.com/watch?v=8bZh5LMaSmE&amp;list=LLlt4ZSW8NUcXLWiB3NMnK_w&amp;index=2">All the Small Things</a> talk  by Sandi Metz<br>
+<a href="https://www.youtube.com/watch?v=aAb7hSCtvGw&amp;list=LLlt4ZSW8NUcXLWiB3NMnK_w&amp;index=49">How to Design a Good API and Why it Matters</a> talk</p>
+</blockquote>
+</li>
+</ul>
+
+</div>
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <p><a href="#overview"><img style='background-color:yellowgreen; float:left; border-radius:50%;' src='back.png' width=60 alt='BackToTop'></a></p>
 
 </div>
@@ -15253,12 +15666,6 @@ dtype: object</pre>
 <li><p>Do they use the appropriate logging level?</p>
 </li>
 </ul>
-
-</div>
-</div>
-<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<p><a href="https://stackoverflow.com/questions/14745022/how-to-split-a-column-into-two-columns">Pandas str.split</a></p>
 
 </div>
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
@@ -15488,256 +15895,121 @@ dtype: object</pre>
 </div>
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h1 id="Tips-for-conducting-a-code-review-">Tips for conducting a code review <a class="anchor" id="code-review-tips" /><a class="anchor-link" href="#Tips-for-conducting-a-code-review-">&#182;</a></h1><p>Now that we know what we're looking for, let's go over some tips on how to actually write your code review. When your coworker finishes up some code that they want to merge to the team's code base, they might send it to you for review. You provide feedback and suggestions, and then they may make changes and send it back to you. When you are happy with the code, you approve it and it gets merged to the team's code base.</p>
+<p>As you may have noticed, with code reviews you are now dealing with people, not just computers. So it's important to be thoughtful of their ideas and efforts. You are in a team and there will be differences in preferences. The goal of code review isn't to make all code follow your personal preferences, but to ensure it meets a standard of quality for the whole team.</p>
+<h2 id="Tip:-Use-a-code-linter">Tip: Use a code linter<a class="anchor-link" href="#Tip:-Use-a-code-linter">&#182;</a></h2><p>This isn't really a tip for code review, but it can save you lots of time in a code review. Using a Python code linter like <a href="https://www.pylint.org/">pylint</a> can automatically check for coding standards and PEP 8 guidelines for you. It's also a good idea to agree on a style guide as a team to handle disagreements on code style, whether that's an existing style guide or one you create together incrementally as a team.</p>
+<h2 id="Tip:-Explain-issues-and-make-suggestions">Tip: Explain issues and make suggestions<a class="anchor-link" href="#Tip:-Explain-issues-and-make-suggestions">&#182;</a></h2><p>Rather than commanding people to change their code a specific way because it's better, it will go a long way to explain to them the consequences of the current code and <em>suggest</em> changes to improve it. They will be much more receptive to your feedback if they understand your thought process and are accepting recommendations, rather than following commands. They also may have done it a certain way intentionally, and framing it as a suggestion promotes a constructive discussion, rather than opposition.</p>
+
+<pre><code>BAD: Make model evaluation code its own module - too repetitive.
+
+BETTER: Make the model evaluation code its own module. This will simplify models.py to be less repetitive and focus primarily on building models.
+
+GOOD: How about we consider making the model evaluation code its own module? This would simplify models.py to only include code for building models. Organizing these evaluations methods into separate functions would also allow us to reuse them with different models without repeating code.</code></pre>
+<h2 id="Tip:-Keep-your-comments-objective">Tip: Keep your comments objective<a class="anchor-link" href="#Tip:-Keep-your-comments-objective">&#182;</a></h2><p>Try to avoid using the words "I" and "you" in your comments. You want to avoid comments that sound personal to bring the attention of the review to the code and not to themselves.</p>
+
+<pre><code>BAD: I wouldn't groupby genre twice like you did here... Just compute it once and use that for your aggregations.
+
+BAD: You create this groupby dataframe twice here. Just compute it once, save it as groupby_genre and then use that to get your average prices and views.
+
+GOOD: Can we group by genre at the beginning of the function and then save that as a groupby object? We could then reference that object to get the average prices and views without computing groupby twice.</code></pre>
+<h2 id="Tip:-Provide-code-examples">Tip: Provide code examples<a class="anchor-link" href="#Tip:-Provide-code-examples">&#182;</a></h2><p>When providing a code review, you can save the author time and make it easy for them to act on your feedback by writing out your code suggestions. This shows you are willing to spend some extra time to review their code and help them out. It can also just be much quicker for you to demonstrate concepts through code rather than explanations.</p>
+<p>Let's say you were reviewing code that included the following lines:</p>
+<div class="highlight"><pre><span></span><span class="n">first_names</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">last_names</span> <span class="o">=</span> <span class="p">[]</span>
+
+<span class="k">for</span> <span class="n">name</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">name</span><span class="p">):</span>
+    <span class="n">first</span><span class="p">,</span> <span class="n">last</span> <span class="o">=</span> <span class="n">name</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39; &#39;</span><span class="p">)</span>
+    <span class="n">first_names</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">first</span><span class="p">)</span>
+    <span class="n">last_names</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">last</span><span class="p">)</span>
+
+<span class="n">df</span><span class="p">[</span><span class="s1">&#39;first_name&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">first_names</span>
+<span class="n">df</span><span class="p">[</span><span class="s1">&#39;last_names&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">last_names</span>
+</pre></div>
+<p>BAD: You can do this all in one step by using the pandas str.split method.
+GOOD: We can actually simplify this step to the line below using the pandas str.split method. Found this on <a href="https://stackoverflow.com/questions/14745022/how-to-split-a-column-into-two-columns">this stack overflow post</a></p>
+<div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;first_name&#39;</span><span class="p">],</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;last_name&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39; &#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">str</span>
+</pre></div>
+
+</div>
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <p><a href="#overview"><img style='background-color:yellowgreen; float:left; border-radius:50%;' src='back.png' width=60 alt='BackToTop'></a></p>
 
 </div>
 </div>
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h2 id="Object-Oriented-Programming-">Object-Oriented Programming <a class="anchor" id="oop" /><a class="anchor-link" href="#Object-Oriented-Programming-">&#182;</a></h2><p><a href="https://www.python-course.eu/python3_properties.php">Python Tutorial</a><br>
-<a href="https://sphinxcontrib-napoleon.readthedocs.io/en/latest/example_google.html">Example Google Style Python Docstrings</a></p>
+<h1 id="Object-Oriented-Programming--(OOP)-">Object-Oriented Programming  (OOP) <a class="anchor" id="oop" /><a class="anchor-link" href="#Object-Oriented-Programming--(OOP)-">&#182;</a></h1><h3 id="Lesson-outline">Lesson outline<a class="anchor-link" href="#Lesson-outline">&#182;</a></h3><ul>
+<li>Object-oriented programming syntax  <blockquote><p>Procedural vs. object-oriented programming<br>
+Classes, objects, methods and attributes<br>
+Coding a class<br>
+Magic methods<br>
+ Inheritance</p>
+</blockquote>
+</li>
+</ul>
+<ul>
+<li>Using object-oriented programming to make a Python package  <blockquote><p>Making a package<br>
+Tour of <code>scikit-learn</code> source code<br>
+Putting your package on PyPi</p>
+</blockquote>
+</li>
+</ul>
+<h3 id="Why-object-oriented-programming?">Why object-oriented programming?<a class="anchor-link" href="#Why-object-oriented-programming?">&#182;</a></h3><p>Object-oriented programming has a few benefits over procedural programming, which is the programming style you most likely first learned. As you'll see in this lesson:</p>
 
-</div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[10]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-     <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">time</span>
-<span class="kn">import</span> <span class="nn">scipy.special</span> <span class="k">as</span> <span class="nn">ss</span>
+<pre><code>&gt; Object-oriented programming allows you to create large, modular programs that can easily expand over time.  
+&gt; Object-oriented programs hide the implementation from the end user.  
 
-<span class="n">ss</span><span class="o">.</span><span class="n">binom</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
-
-<span class="c1"># p = .15, n=60, k=7</span>
-
-<span class="c1"># p(k=7) = binom(60, 7) * 0.15**7 * .85**53</span>
+</code></pre>
+<p>Consider Python packages like <a href="https://github.com/scikit-learn/scikit-learn">Scikit-learn</a>, <a href="https://pandas.pydata.org/">pandas</a>, and <a href="https://numpy.org/">NumPy</a>. These are all Python packages built with object-oriented programming. <code>Scikit-learn</code>, for example, is a relatively large and complex package built with object-oriented programming. This package has expanded over the years with new functionality and new algorithms.</p>
+<p>When you train a machine learning algorithm with <code>Scikit-learn</code>, you don't have to know anything about how the algorithms work or how they were coded. You can focus directly on the modeling.</p>
+<p>Here's an example taken from the <a href="https://scikit-learn.org/stable/modules/svm.html">Scikit-learn website</a>:</p>
+<div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn</span> <span class="kn">import</span> <span class="n">svm</span>
+<span class="n">X</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">]]</span>
+<span class="n">y</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
+<span class="n">clf</span> <span class="o">=</span> <span class="n">svm</span><span class="o">.</span><span class="n">SVC</span><span class="p">()</span>
+<span class="n">clf</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
 </pre></div>
-
-     </div>
-</div>
-</div>
-</div>
-
-<div class="jp-Cell-outputWrapper">
-
-
-<div class="jp-OutputArea jp-Cell-outputArea">
-
-<div class="jp-OutputArea-child">
-
-    
-    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[10]:</div>
-
-
-
-
-<div class="jp-RenderedText jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/plain">
-<pre>252.0</pre>
-</div>
+<p>How does <code>Scikit-learn</code> train the SVM model? You don't need to know because the implementation is hidden with object-oriented programming. If the implementation changes, you (as a user of <code>Scikit-learn</code>) might not ever find out. Whether or not you <em>should</em> understand how SVM works is a different question.</p>
+<p>In this lesson, you'll practice the fundamentals of object-oriented programming. By the end of the lesson, you'll have built a Python package using object-oriented programming.</p>
+<h3 id="Lesson-files">Lesson files<a class="anchor-link" href="#Lesson-files">&#182;</a></h3><p>This lesson uses classroom workspaces that contain all of the files and functionality you need. You can also find the files in the <a href="https://github.com/udacity/DSND_Term2/tree/master/lessons/ObjectOrientedProgramming">data scientist nanodegree term 2 GitHub repo</a>.</p>
 
 </div>
-
-</div>
-
-</div>
-
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[11]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-     <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">prob_binom_dist</span><span class="p">(</span><span class="n">n_trials</span><span class="p">,</span> <span class="n">n_success</span><span class="p">,</span> <span class="n">p</span><span class="p">):</span>
-    <span class="k">return</span> <span class="n">ss</span><span class="o">.</span><span class="n">binom</span><span class="p">(</span><span class="n">n_trials</span><span class="p">,</span> <span class="n">n_success</span><span class="p">)</span> <span class="o">*</span> <span class="n">p</span><span class="o">**</span><span class="n">n_success</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">p</span><span class="p">)</span><span class="o">**</span><span class="p">(</span><span class="n">n_trials</span> <span class="o">-</span> <span class="n">n_success</span><span class="p">)</span>
-</pre></div>
-
-     </div>
-</div>
-</div>
-</div>
-
-<div class="jp-Cell-outputWrapper">
-
-
-<div class="jp-OutputArea jp-Cell-outputArea">
-
-<div class="jp-OutputArea-child">
-
-    
-    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-
-
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
-<pre>Duration: 0.0 seconds
-</pre>
-</div>
-</div>
-
-</div>
-
-</div>
-
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[13]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-     <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">start</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
-
-<span class="nb">print</span><span class="p">(</span><span class="n">prob_binom_dist</span><span class="p">(</span><span class="mi">60</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="o">.</span><span class="mi">15</span><span class="p">))</span>
-
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Duration: </span><span class="si">{0}</span><span class="s1"> seconds&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span> <span class="o">-</span> <span class="n">start</span><span class="p">))</span>
-</pre></div>
-
-     </div>
-</div>
-</div>
-</div>
-
-<div class="jp-Cell-outputWrapper">
-
-
-<div class="jp-OutputArea jp-Cell-outputArea">
-
-<div class="jp-OutputArea-child">
-
-    
-    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-
-
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
-<pre>0.11985659270959788
-Duration: 0.01099395751953125 seconds
-</pre>
-</div>
-</div>
-
-</div>
-
-</div>
-
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[7]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-     <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">import</span> <span class="nn">math</span>
-
-<span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">29</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">23</span><span class="p">,</span> <span class="mi">55</span><span class="p">,</span> <span class="mi">78</span><span class="p">]</span>
-
-<span class="nb">max</span><span class="p">(</span><span class="n">a</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">a</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
-</pre></div>
-
-     </div>
-</div>
-</div>
-</div>
-
-<div class="jp-Cell-outputWrapper">
-
-
-<div class="jp-OutputArea jp-Cell-outputArea">
-
-<div class="jp-OutputArea-child">
-
-    
-    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[7]:</div>
-
-
-
-
-<div class="jp-RenderedText jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/plain">
-<pre>(78, 33.0, 25.955089417427686)</pre>
-</div>
-
-</div>
-
-</div>
-
-</div>
-
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[8]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-     <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">math</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
-</pre></div>
-
-     </div>
-</div>
-</div>
-</div>
-
-<div class="jp-Cell-outputWrapper">
-
-
-<div class="jp-OutputArea jp-Cell-outputArea">
-
-<div class="jp-OutputArea-child">
-
-    
-    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[8]:</div>
-
-
-
-
-<div class="jp-RenderedText jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/plain">
-<pre>2.718281828459045</pre>
-</div>
-
-</div>
-
-</div>
-
-</div>
-
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[9]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-     <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">math</span><span class="o">.</span><span class="n">pi</span>
-</pre></div>
-
-     </div>
-</div>
-</div>
-</div>
-
-<div class="jp-Cell-outputWrapper">
-
-
-<div class="jp-OutputArea jp-Cell-outputArea">
-
-<div class="jp-OutputArea-child">
-
-    
-    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[9]:</div>
-
-
-
-
-<div class="jp-RenderedText jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/plain">
-<pre>3.141592653589793</pre>
-</div>
-
-</div>
-
-</div>
-
-</div>
-
 </div>
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h2 id="Making-a-Package---">Making a Package   <a class="anchor" id="making-package" /><a class="anchor-link" href="#Making-a-Package---">&#182;</a></h2><p>A Python <strong>module</strong> is just a Python file containing code.</p>
+<h2 id="Object-oriented-programming-(OOP)-vocabulary">Object-oriented programming (OOP) vocabulary<a class="anchor-link" href="#Object-oriented-programming-(OOP)-vocabulary">&#182;</a></h2><ul>
+<li><em>Class</em>: A blueprint consisting of methods and attributes.  </li>
+<li><em>Object</em>: An instance of a class. It can help to think of objects as something in the real world like a yellow pencil, a small dog, or a blue shirt. However, as you'll see later in the lesson, objects can be more abstract.  </li>
+<li><em>Attribute</em>: A descriptor or characteristic. Examples would be color, length, size, etc. These attributes can take on specific values like blue, 3 inches, large, etc.   </li>
+<li><em>Method</em>: An action that a class or object could take.   </li>
+<li><em>OOP</em>: A commonly used abbreviation for object-oriented programming.   </li>
+<li><em>Encapsulation</em>: One of the fundamental ideas behind object-oriented programming is called encapsulation: you can combine functions and data all into a single entity. In object-oriented programming, this single entity is called a class. Encapsulation allows you to hide implementation details, much like how the <code>scikit-learn</code> package hides the implementation of machine learning algorithms.</li>
+</ul>
+<p>In English, you might hear an attribute described as a <em>property</em>, <em>description</em>, <em>feature</em>, <em>quality</em>, <em>trait</em>, or <em>characteristic</em>. All of these are saying the same thing.</p>
+
+</div>
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<p>Links to more advanced Python OOP topics:</p>
+<p><a href="https://www.python-course.eu/python3_class_and_instance_attributes.php">Class and Instance Attributes</a></p>
+<p><a href="https://easyaspython.com/mixins-for-fun-and-profit-cb9962760556?gi=93c299352ffc">Mixins for Fun and Profit</a></p>
+<p><a href="https://realpython.com/primer-on-python-decorators/">Primer on Python Decorators</a></p>
+<p><a href="https://realpython.com/instance-class-and-static-methods-demystified/">Python's Instance Methods, Class Methods, and Static Methods Demystified</a></p>
+
+</div>
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<p><a href="#overview"><img style='background-color:yellowgreen; float:left; border-radius:50%;' src='back.png' width=60 alt='BackToTop'></a></p>
+
+</div>
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h1 id="Making-a-Package---">Making a Package   <a class="anchor" id="making-package" /><a class="anchor-link" href="#Making-a-Package---">&#182;</a></h1><p>A Python <strong>module</strong> is just a Python file containing code.</p>
 <p>A <strong>package</strong> is a collection of Python modules. A Python package needs an <strong><code>__init__.py</code></strong> file.</p>
 <p><strong>What is pip?</strong></p>
 <p>Pip is a <a href="https://pip.pypa.io/en/stable/">Python package manager</a> that helps with installing and uninstalling Python packages. You might have used pip to install packages using the command line: <code>pip install numpy</code>. When you execute a command like <code>pip install numpy</code>, pip will download the package from a Python package repository called <a href="https://pypi.org/">PyPi</a> - Python Package Index.</p>
@@ -15832,885 +16104,6 @@ Duration: 0.01099395751953125 seconds
 <p>Examples of good README are shown here <a href="https://github.com/twbs/bootstrap">Bootstrap</a> |  <a href="https://github.com/scikit-learn/scikit-learn">Scikit-Learn</a> | <a href="https://github.com/jjrunner/stackoverflow">Stack Overflow Blog</a></p>
 
 </div>
-</div>
-<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h2 id="Advanced-Python-OOP-Topics--">Advanced Python OOP Topics  <a class="anchor" id="advanced-oop" /><a class="anchor-link" href="#Advanced-Python-OOP-Topics--">&#182;</a></h2><p>Here are a few links to more advanced OOP topics that appear in the Scikit-learn package:</p>
-<ul>
-<li><p><a href="https://realpython.com/primer-on-python-decorators/">Decorators</a></p>
-</li>
-<li><p><a href="https://easyaspython.com/mixins-for-fun-and-profit-cb9962760556">Mixins</a></p>
-</li>
-</ul>
-
-</div>
-</div>
-<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<p><a href="#overview"><img style='background-color:yellowgreen; float:left; border-radius:50%;' src='back.png' width=60 alt='BackToTop'></a></p>
-
-</div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[1]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-     <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;./4a_binomial_package/numbers_binomial.txt&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">file</span><span class="p">:</span>
-    <span class="n">data_list</span> <span class="o">=</span> <span class="p">[]</span>
-    <span class="n">line</span> <span class="o">=</span> <span class="n">file</span><span class="o">.</span><span class="n">readline</span><span class="p">()</span>
-    <span class="k">while</span> <span class="n">line</span><span class="p">:</span>
-        <span class="n">data_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">line</span><span class="o">.</span><span class="n">strip</span><span class="p">()))</span>
-        <span class="n">line</span> <span class="o">=</span> <span class="n">file</span><span class="o">.</span><span class="n">readline</span><span class="p">()</span>
-        
-<span class="n">data_list</span>
-</pre></div>
-
-     </div>
-</div>
-</div>
-</div>
-
-<div class="jp-Cell-outputWrapper">
-
-
-<div class="jp-OutputArea jp-Cell-outputArea">
-
-<div class="jp-OutputArea-child">
-
-    
-    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[1]:</div>
-
-
-
-
-<div class="jp-RenderedText jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/plain">
-<pre>[0, 1, 1, 1, 1, 1, 0, 1, 0, 1, 0, 1, 0]</pre>
-</div>
-
-</div>
-
-</div>
-
-</div>
-
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[2]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-     <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="nb">sum</span><span class="p">(</span><span class="n">data_list</span><span class="p">)</span>
-</pre></div>
-
-     </div>
-</div>
-</div>
-</div>
-
-<div class="jp-Cell-outputWrapper">
-
-
-<div class="jp-OutputArea jp-Cell-outputArea">
-
-<div class="jp-OutputArea-child">
-
-    
-    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[2]:</div>
-
-
-
-
-<div class="jp-RenderedText jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/plain">
-<pre>8</pre>
-</div>
-
-</div>
-
-</div>
-
-</div>
-
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[3]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-     <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="nb">len</span><span class="p">(</span><span class="n">data_list</span><span class="p">)</span>
-</pre></div>
-
-     </div>
-</div>
-</div>
-</div>
-
-<div class="jp-Cell-outputWrapper">
-
-
-<div class="jp-OutputArea jp-Cell-outputArea">
-
-<div class="jp-OutputArea-child">
-
-    
-    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[3]:</div>
-
-
-
-
-<div class="jp-RenderedText jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/plain">
-<pre>13</pre>
-</div>
-
-</div>
-
-</div>
-
-</div>
-
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[4]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-     <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
-</pre></div>
-
-     </div>
-</div>
-</div>
-</div>
-
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[40]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-     <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">d</span> <span class="o">=</span> <span class="p">{</span><span class="mi">0</span><span class="p">:</span> <span class="nb">len</span><span class="p">(</span><span class="n">data_list</span><span class="p">)</span> <span class="o">-</span> <span class="nb">sum</span><span class="p">(</span><span class="n">data_list</span><span class="p">),</span> <span class="mi">1</span><span class="p">:</span> <span class="nb">sum</span><span class="p">(</span><span class="n">data_list</span><span class="p">)}</span>
-<span class="c1">#kwargs = dict(color=&#39;gray&#39;, linestyle=&#39;-&#39;, linewidth=1, alpha=0.2)</span>
-
-<span class="n">kwargs2</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="n">which</span><span class="o">=</span><span class="s1">&#39;major&#39;</span><span class="p">,</span> <span class="n">left</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">right</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">labelleft</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> 
-               <span class="n">zorder</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">labelrotation</span><span class="o">=</span><span class="mi">90</span><span class="p">,</span> <span class="n">direction</span><span class="o">=</span><span class="s1">&#39;out&#39;</span><span class="p">,</span> <span class="n">length</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> 
-               <span class="n">width</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">colors</span><span class="o">=</span><span class="s1">&#39;g&#39;</span><span class="p">,</span> <span class="n">grid_linewidth</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">grid_color</span><span class="o">=</span><span class="s1">&#39;g&#39;</span><span class="p">,</span> 
-               <span class="n">grid_linestyle</span><span class="o">=</span><span class="s1">&#39;:&#39;</span><span class="p">,</span> <span class="n">grid_alpha</span><span class="o">=</span><span class="mf">0.3</span><span class="p">)</span>
-
-<span class="n">plt</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">d</span><span class="o">.</span><span class="n">keys</span><span class="p">(),</span> <span class="n">d</span><span class="o">.</span><span class="n">values</span><span class="p">(),</span> <span class="n">width</span><span class="o">=.</span><span class="mi">6</span><span class="p">,</span> <span class="n">zorder</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="n">ticks</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">],</span> <span class="n">labels</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;0&#39;</span><span class="p">,</span> <span class="s1">&#39;1&#39;</span><span class="p">])</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">yticks</span><span class="p">(</span><span class="n">ticks</span><span class="o">=</span><span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
-<span class="k">for</span> <span class="n">pos</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;top&#39;</span><span class="p">,</span> <span class="s1">&#39;right&#39;</span><span class="p">]:</span>
-    <span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span><span class="o">.</span><span class="n">spines</span><span class="p">[</span><span class="n">pos</span><span class="p">]</span><span class="o">.</span><span class="n">set_visible</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Outcome&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Count&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Bar Chart of Data&#39;</span><span class="p">)</span>
-<span class="c1"># plt.grid(b=True, axis=&#39;y&#39;, **kwargs)</span>
-
-<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="s1">&#39;y&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">tick_params</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="s1">&#39;y&#39;</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs2</span><span class="p">)</span>
-
-<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">();</span>
-</pre></div>
-
-     </div>
-</div>
-</div>
-</div>
-
-<div class="jp-Cell-outputWrapper">
-
-
-<div class="jp-OutputArea jp-Cell-outputArea">
-
-<div class="jp-OutputArea-child">
-
-    
-    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-
-
-
-
-<div class="jp-RenderedImage jp-OutputArea-output ">
-<img src="data:image/png;base64,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
-"
->
-</div>
-
-</div>
-
-</div>
-
-</div>
-
-</div>plt.tick_params(axis='y', which='both', left=True, right=False, labelleft=True, 
-                labelrotation=20, direction='out', length=4, width=2, colors='#373837',
-                   grid_color='r', grid_alpha=0.2)
-for pos in ['top', 'right']:
-    plt.gca().spines[pos].set_visible(False)<div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[21]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-     <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="k">class</span> <span class="nc">Distribution</span><span class="p">:</span>
-
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">mu</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">sigma</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot; Generic distribution class for calculating and </span>
-<span class="sd">        visualizing a probability distribution.</span>
-
-<span class="sd">        Attributes:</span>
-<span class="sd">            mean (float) representing the mean value of the distribution</span>
-<span class="sd">            stdev (float) representing the standard deviation of the distribution</span>
-<span class="sd">            data_list (list of floats) a list of floats extracted from the data file</span>
-<span class="sd">        &quot;&quot;&quot;</span>
-
-        <span class="bp">self</span><span class="o">.</span><span class="n">mean</span> <span class="o">=</span> <span class="n">mu</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">stdev</span> <span class="o">=</span> <span class="n">sigma</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">data</span> <span class="o">=</span> <span class="p">[]</span>
-
-    <span class="k">def</span> <span class="nf">read_data_file</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">file_name</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Function to read in data from a txt file. The txt file should have</span>
-<span class="sd">        one number (float) per line. The numbers are stored in the data attribute.</span>
-
-<span class="sd">        Args:</span>
-<span class="sd">            file_name (string): name of a file to read from</span>
-
-<span class="sd">        Returns:</span>
-<span class="sd">            None</span>
-
-<span class="sd">        &quot;&quot;&quot;</span>
-
-        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">file_name</span><span class="p">)</span> <span class="k">as</span> <span class="n">file</span><span class="p">:</span>
-            <span class="n">data_list</span> <span class="o">=</span> <span class="p">[]</span>
-            <span class="n">line</span> <span class="o">=</span> <span class="n">file</span><span class="o">.</span><span class="n">readline</span><span class="p">()</span>
-            <span class="k">while</span> <span class="n">line</span><span class="p">:</span>
-                <span class="n">data_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">line</span><span class="p">))</span>
-                <span class="n">line</span> <span class="o">=</span> <span class="n">file</span><span class="o">.</span><span class="n">readline</span><span class="p">()</span>
-        <span class="c1"># file.close()</span>
-
-        <span class="bp">self</span><span class="o">.</span><span class="n">data</span> <span class="o">=</span> <span class="n">data_list</span>
-</pre></div>
-
-     </div>
-</div>
-</div>
-</div>
-
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[1]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-     <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">math</span>
-<span class="kn">import</span> <span class="nn">scipy.special</span> <span class="k">as</span> <span class="nn">ss</span>
-<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
-<span class="c1">#from .Generaldistribution import Distribution</span>
-
-
-<span class="k">class</span> <span class="nc">Binomial</span><span class="p">(</span><span class="n">Distribution</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot; Binomial distribution class for calculating and </span>
-<span class="sd">    visualizing a Binomial distribution.</span>
-<span class="sd">    </span>
-<span class="sd">    Attributes:</span>
-<span class="sd">        mean (float) representing the mean value of the distribution</span>
-<span class="sd">        stdev (float) representing the standard deviation of the distribution</span>
-<span class="sd">        data_list (list of floats) a list of floats to be extracted from the data file</span>
-<span class="sd">        p (float) representing the probability of an event occurring</span>
-<span class="sd">        n (int) the total number of trials</span>
-<span class="sd">    </span>
-<span class="sd">    </span>
-<span class="sd">    TODO: Fill out all TODOs in the functions below</span>
-<span class="sd">            </span>
-<span class="sd">    &quot;&quot;&quot;</span>
-
-    <span class="c1">#       A binomial distribution is defined by two variables:</span>
-    <span class="c1">#           the probability of getting a positive outcome</span>
-    <span class="c1">#           the number of trials</span>
-
-    <span class="c1">#       If you know these two values, you can calculate the mean and the standard deviation</span>
-    <span class="c1">#</span>
-    <span class="c1">#       For example, if you flip a fair coin 25 times, p = 0.5 and n = 25</span>
-    <span class="c1">#       You can then calculate the mean and standard deviation with the following formula:</span>
-    <span class="c1">#           mean = p * n</span>
-    <span class="c1">#           standard deviation = sqrt(n * p * (1 - p))</span>
-
-    <span class="c1">#</span>
-
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">prob</span><span class="o">=.</span><span class="mi">5</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">20</span><span class="p">):</span>
-
-        <span class="c1"># TODO: store the probability of the distribution in an instance variable p</span>
-        <span class="c1"># TODO: store the size of the distribution in an instance variable n</span>
-
-        <span class="c1"># TODO: Now that you know p and n, you can calculate the mean and standard deviation</span>
-        <span class="c1">#       Use the calculate_mean() and calculate_stdev() methods to calculate the</span>
-        <span class="c1">#       distribution mean and standard deviation</span>
-        <span class="c1">#</span>
-        <span class="c1">#       Then use the init function from the Distribution class to initialize the</span>
-        <span class="c1">#       mean and the standard deviation of the distribution</span>
-        <span class="c1">#</span>
-        <span class="c1">#       Hint: You need to define the calculate_mean() and calculate_stdev() methods</span>
-        <span class="c1">#               farther down in the code starting in line 55.</span>
-        <span class="c1">#               The init function can get access to these methods via the self</span>
-        <span class="c1">#               variable.</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">p</span> <span class="o">=</span> <span class="n">prob</span> 
-        <span class="bp">self</span><span class="o">.</span><span class="n">n</span> <span class="o">=</span> <span class="n">size</span>
-    
-        <span class="n">Distribution</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">calculate_mean</span><span class="p">(),</span> <span class="bp">self</span><span class="o">.</span><span class="n">calculate_stdev</span><span class="p">())</span>
-
-        
-    <span class="k">def</span> <span class="nf">calculate_mean</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Function to calculate the mean from p and n</span>
-<span class="sd">        </span>
-<span class="sd">        Args: </span>
-<span class="sd">            None</span>
-<span class="sd">        </span>
-<span class="sd">        Returns: </span>
-<span class="sd">            float: mean of the data set</span>
-<span class="sd">    </span>
-<span class="sd">        &quot;&quot;&quot;</span>
-
-        <span class="c1"># TODO: calculate the mean of the Binomial distribution. Store the mean</span>
-        <span class="c1">#       via the self variable and also return the new mean value</span>
-
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">n</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">p</span>
-
-    
-    <span class="k">def</span> <span class="nf">calculate_stdev</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Function to calculate the standard deviation from p and n.</span>
-<span class="sd">        </span>
-<span class="sd">        Args: </span>
-<span class="sd">            None</span>
-<span class="sd">        </span>
-<span class="sd">        Returns: </span>
-<span class="sd">            float: standard deviation of the data set</span>
-<span class="sd">    </span>
-<span class="sd">        &quot;&quot;&quot;</span>
-
-        <span class="c1"># TODO: calculate the standard deviation of the Binomial distribution. Store</span>
-        <span class="c1">#       the result in the self standard deviation attribute. Return the value</span>
-        <span class="c1">#       of the standard deviation.</span>
-        <span class="k">return</span> <span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">n</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">p</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">p</span><span class="p">))</span>
-
-    
-    <span class="k">def</span> <span class="nf">replace_stats_with_data</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Function to calculate p and n from the data set</span>
-<span class="sd">        </span>
-<span class="sd">        Args: </span>
-<span class="sd">            None</span>
-<span class="sd">        </span>
-<span class="sd">        Returns: </span>
-<span class="sd">            float: the p value</span>
-<span class="sd">            float: the n value</span>
-<span class="sd">    </span>
-<span class="sd">        &quot;&quot;&quot;</span>
-
-        <span class="c1"># TODO: The read_data_file() from the Generaldistribution class can read in a data</span>
-        <span class="c1">#       file. Because the Binomaildistribution class inherits from the Generaldistribution class,</span>
-        <span class="c1">#       you don&#39;t need to re-write this method. However,  the method</span>
-        <span class="c1">#       doesn&#39;t update the mean or standard deviation of</span>
-        <span class="c1">#       a distribution. Hence you are going to write a method that calculates n, p, mean and</span>
-        <span class="c1">#       standard deviation from a data set and then updates the n, p, mean and stdev attributes.</span>
-        <span class="c1">#       Assume that the data is a list of zeros and ones like [0 1 0 1 1 0 1].</span>
-        <span class="c1">#</span>
-        <span class="c1">#       Write code that:</span>
-        <span class="c1">#           updates the n attribute of the binomial distribution</span>
-        <span class="c1">#           updates the p value of the binomial distribution by calculating the</span>
-        <span class="c1">#               number of positive trials divided by the total trials</span>
-        <span class="c1">#           updates the mean attribute</span>
-        <span class="c1">#           updates the standard deviation attribute</span>
-        <span class="c1">#</span>
-        <span class="c1">#       Hint: You can use the calculate_mean() and calculate_stdev() methods</span>
-        <span class="c1">#           defined previously.</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">read_data_file</span><span class="p">(</span><span class="s1">&#39;./4a_binomial_package/numbers_binomial.txt&#39;</span><span class="p">)</span>
-        
-        <span class="bp">self</span><span class="o">.</span><span class="n">n</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">p</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">)</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">)</span> 
-        <span class="bp">self</span><span class="o">.</span><span class="n">mean</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">calculate_mean</span><span class="p">()</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">stdev</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">calculate_stdev</span><span class="p">()</span>
-
-        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">p</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">n</span>
-
-    
-    <span class="k">def</span> <span class="nf">plot_bar</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Function to output a histogram of the instance variable data using </span>
-<span class="sd">        matplotlib pyplot library.</span>
-<span class="sd">        </span>
-<span class="sd">        Args:</span>
-<span class="sd">            None</span>
-<span class="sd">            </span>
-<span class="sd">        Returns:</span>
-<span class="sd">            None</span>
-<span class="sd">        &quot;&quot;&quot;</span>
-
-        <span class="c1"># TODO: Use the matplotlib package to plot a bar chart of the data</span>
-        <span class="c1">#       The x-axis should have the value zero or one</span>
-        <span class="c1">#       The y-axis should have the count of results for each case</span>
-        <span class="c1">#</span>
-        <span class="c1">#       For example, say you have a coin where heads = 1 and tails = 0.</span>
-        <span class="c1">#       If you flipped a coin 35 times, and the coin landed on</span>
-        <span class="c1">#       heads 20 times and tails 15 times, the bar chart would have two bars:</span>
-        <span class="c1">#       0 on the x-axis and 15 on the y-axis</span>
-        <span class="c1">#       1 on the x-axis and 20 on the y-axis</span>
-
-        <span class="c1">#       Make sure to label the chart with a title, x-axis label and y-axis label</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">replace_stats_with_data</span><span class="p">()</span>
-        <span class="n">d</span> <span class="o">=</span> <span class="p">{</span><span class="mi">0</span><span class="p">:</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">)</span> <span class="o">-</span> <span class="nb">sum</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">),</span> <span class="mi">1</span><span class="p">:</span> <span class="nb">sum</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">)}</span>
-        <span class="c1">#kwargs = dict(color=&#39;gray&#39;, linestyle=&#39;-&#39;, linewidth=1, alpha=0.2)</span>
-
-        <span class="n">kwargs2</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="n">which</span><span class="o">=</span><span class="s1">&#39;major&#39;</span><span class="p">,</span> <span class="n">left</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">right</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">labelleft</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> 
-                       <span class="n">zorder</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">labelrotation</span><span class="o">=</span><span class="mi">90</span><span class="p">,</span> <span class="n">direction</span><span class="o">=</span><span class="s1">&#39;out&#39;</span><span class="p">,</span> <span class="n">length</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> 
-                       <span class="n">width</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">colors</span><span class="o">=</span><span class="s1">&#39;g&#39;</span><span class="p">,</span> <span class="n">grid_linewidth</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">grid_color</span><span class="o">=</span><span class="s1">&#39;g&#39;</span><span class="p">,</span> 
-                       <span class="n">grid_linestyle</span><span class="o">=</span><span class="s1">&#39;:&#39;</span><span class="p">,</span> <span class="n">grid_alpha</span><span class="o">=</span><span class="mf">0.3</span><span class="p">)</span>
-
-        <span class="n">plt</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">d</span><span class="o">.</span><span class="n">keys</span><span class="p">(),</span> <span class="n">d</span><span class="o">.</span><span class="n">values</span><span class="p">(),</span> <span class="n">width</span><span class="o">=.</span><span class="mi">6</span><span class="p">,</span> <span class="n">zorder</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
-        <span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="n">ticks</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">],</span> <span class="n">labels</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;0&#39;</span><span class="p">,</span> <span class="s1">&#39;1&#39;</span><span class="p">])</span>
-        <span class="n">plt</span><span class="o">.</span><span class="n">yticks</span><span class="p">(</span><span class="n">ticks</span><span class="o">=</span><span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
-        <span class="k">for</span> <span class="n">pos</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;top&#39;</span><span class="p">,</span> <span class="s1">&#39;right&#39;</span><span class="p">]:</span>
-            <span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span><span class="o">.</span><span class="n">spines</span><span class="p">[</span><span class="n">pos</span><span class="p">]</span><span class="o">.</span><span class="n">set_visible</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
-        <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Outcome&#39;</span><span class="p">)</span>
-        <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Count&#39;</span><span class="p">)</span>
-        <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Bar Chart of Data&#39;</span><span class="p">)</span>
-        <span class="c1"># plt.grid(b=True, axis=&#39;y&#39;, **kwargs)</span>
-        <span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="s1">&#39;y&#39;</span><span class="p">)</span>
-        <span class="n">plt</span><span class="o">.</span><span class="n">tick_params</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="s1">&#39;y&#39;</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs2</span><span class="p">)</span>
-
-        <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">();</span>
-        
-        
-    <span class="k">def</span> <span class="nf">pdf</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">k</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Probability density function calculator for the gaussian distribution.</span>
-<span class="sd">        </span>
-<span class="sd">        Args:</span>
-<span class="sd">            k (float): point for calculating the probability density function</span>
-<span class="sd">            </span>
-<span class="sd">        </span>
-<span class="sd">        Returns:</span>
-<span class="sd">            float: probability density function output</span>
-<span class="sd">        &quot;&quot;&quot;</span>
-
-        <span class="c1"># TODO: Calculate the probability density function for a binomial distribution</span>
-        <span class="c1">#  For a binomial distribution with n trials and probability p,</span>
-        <span class="c1">#  the probability density function calculates the likelihood of getting</span>
-        <span class="c1">#   k positive outcomes.</span>
-        <span class="c1">#</span>
-        <span class="c1">#   For example, if you flip a coin n = 60 times, with p = .5,</span>
-        <span class="c1">#   what&#39;s the likelihood that the coin lands on heads 40 out of 60 times?</span>
-
-        <span class="k">return</span> <span class="n">ss</span><span class="o">.</span><span class="n">binom</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">n</span><span class="p">,</span> <span class="n">k</span><span class="p">)</span><span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">p</span><span class="o">**</span><span class="n">k</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">p</span><span class="p">)</span><span class="o">**</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">n</span> <span class="o">-</span> <span class="n">k</span><span class="p">)</span>
-
-    <span class="k">def</span> <span class="nf">plot_bar_pdf</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Function to plot the pdf of the binomial distribution</span>
-<span class="sd">        </span>
-<span class="sd">        Args:</span>
-<span class="sd">            None</span>
-<span class="sd">        </span>
-<span class="sd">        Returns:</span>
-<span class="sd">            list: x values for the pdf plot</span>
-<span class="sd">            list: y values for the pdf plot</span>
-<span class="sd">            </span>
-<span class="sd">        &quot;&quot;&quot;</span>
-
-        <span class="c1"># TODO: Use a bar chart to plot the probability density function from</span>
-        <span class="c1"># k = 0 to k = n</span>
-
-        <span class="c1">#   Hint: You&#39;ll need to use the pdf() method defined above to calculate the</span>
-        <span class="c1">#   density function for every value of k.</span>
-
-        <span class="c1">#   Be sure to label the bar chart with a title, x label and y label</span>
-
-        <span class="c1">#   This method should also return the x and y values used to make the chart</span>
-        <span class="c1">#   The x and y values should be stored in separate lists</span>
-        <span class="n">x</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">n</span> <span class="o">+</span> <span class="mi">1</span><span class="p">))</span>
-        <span class="n">y</span> <span class="o">=</span> <span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">pdf</span><span class="p">(</span><span class="n">k</span><span class="p">)</span> <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="n">x</span><span class="p">]</span>
-
-        <span class="n">plt</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mf">0.6</span><span class="p">)</span>
-        <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Number of successes&#39;</span><span class="p">)</span>
-        <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Probability&#39;</span><span class="p">)</span>
-        <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
-
-        <span class="k">return</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span>
-    
-
-    <span class="k">def</span> <span class="fm">__add__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Function to add together two Binomial distributions with equal p</span>
-<span class="sd">        </span>
-<span class="sd">        Args:</span>
-<span class="sd">            other (Binomial): Binomial instance</span>
-<span class="sd">            </span>
-<span class="sd">        Returns:</span>
-<span class="sd">            Binomial: Binomial distribution</span>
-<span class="sd">            </span>
-<span class="sd">        &quot;&quot;&quot;</span>
-
-        <span class="k">try</span><span class="p">:</span>
-            <span class="k">assert</span> <span class="bp">self</span><span class="o">.</span><span class="n">p</span> <span class="o">==</span> <span class="n">other</span><span class="o">.</span><span class="n">p</span><span class="p">,</span> <span class="s1">&#39;p values are not equal&#39;</span>
-        <span class="k">except</span> <span class="ne">AssertionError</span> <span class="k">as</span> <span class="n">error</span><span class="p">:</span>
-            <span class="k">raise</span> 
-
-        <span class="c1"># TODO: Define addition for two binomial distributions. Assume that the</span>
-        <span class="c1"># p values of the two distributions are the same. The formula for</span>
-        <span class="c1"># summing two binomial distributions with different p values is more complicated,</span>
-        <span class="c1"># so you are only expected to implement the case for two distributions with equal p.</span>
-
-        <span class="c1"># the try, except statement above will raise an exception if the p values are not equal</span>
-
-        <span class="c1"># Hint: You need to instantiate a new binomial object with the correct n, p,</span>
-        <span class="c1">#   mean and standard deviation values. The __add__ method should return this</span>
-        <span class="c1">#   new binomial object.</span>
-
-        <span class="c1">#   When adding two binomial distributions, the p value remains the same</span>
-        <span class="c1">#   The new n value is the sum of the n values of the two distributions.</span>
-
-        <span class="n">binomial_dist</span> <span class="o">=</span> <span class="n">Binomial</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">p</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">n</span> <span class="o">+</span> <span class="n">other</span><span class="o">.</span><span class="n">n</span><span class="p">)</span>
-        <span class="k">return</span> <span class="n">binomial_dist</span>
-
-
-    <span class="k">def</span> <span class="fm">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Function to output the characteristics of the Binomial instance</span>
-<span class="sd">        </span>
-<span class="sd">        Args:</span>
-<span class="sd">            None</span>
-<span class="sd">        </span>
-<span class="sd">        Returns:</span>
-<span class="sd">            string: characteristics of the Gaussian</span>
-<span class="sd">        </span>
-<span class="sd">        &quot;&quot;&quot;</span>
-
-        <span class="c1"># TODO: Define the representation method so that the output looks like</span>
-        <span class="c1">#       mean 5, standard deviation 4.5, p .8, n 20</span>
-        <span class="c1">#</span>
-        <span class="c1">#       with the values replaced by whatever the actual distributions values are</span>
-        <span class="c1">#       The method should return a string in the expected format</span>
-
-        <span class="k">return</span> <span class="s2">&quot;mean </span><span class="si">{}</span><span class="s2">, standard deviation </span><span class="si">{}</span><span class="s2">, p </span><span class="si">{}</span><span class="s2">, n </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">mean</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">stdev</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">p</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">n</span><span class="p">)</span>
-</pre></div>
-
-     </div>
-</div>
-</div>
-</div>
-
-<div class="jp-Cell-outputWrapper">
-
-
-<div class="jp-OutputArea jp-Cell-outputArea">
-
-<div class="jp-OutputArea-child">
-
-    
-    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-
-
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr">
-<pre>
-<span class="ansi-red-intense-fg ansi-bold">---------------------------------------------------------------------------</span>
-<span class="ansi-red-intense-fg ansi-bold">NameError</span>                                 Traceback (most recent call last)
-<span class="ansi-green-intense-fg ansi-bold">&lt;ipython-input-1-61b05528d94a&gt;</span> in <span class="ansi-cyan-fg">&lt;module&gt;</span>
-<span class="ansi-green-fg">      5</span> 
-<span class="ansi-green-fg">      6</span> 
-<span class="ansi-green-intense-fg ansi-bold">----&gt; 7</span><span class="ansi-yellow-intense-fg ansi-bold"> </span><span class="ansi-green-intense-fg ansi-bold">class</span> Binomial<span class="ansi-yellow-intense-fg ansi-bold">(</span>Distribution<span class="ansi-yellow-intense-fg ansi-bold">)</span><span class="ansi-yellow-intense-fg ansi-bold">:</span>
-<span class="ansi-green-fg">      8</span>     &#34;&#34;&#34; Binomial distribution class for calculating and 
-<span class="ansi-green-fg">      9</span>     visualizing a Binomial distribution<span class="ansi-yellow-intense-fg ansi-bold">.</span>
-
-<span class="ansi-red-intense-fg ansi-bold">NameError</span>: name &#39;Distribution&#39; is not defined</pre>
-</div>
-</div>
-
-</div>
-
-</div>
-
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[47]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-     <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">binom1</span> <span class="o">=</span> <span class="n">Binomial</span><span class="p">()</span>
-
-<span class="n">binom2</span> <span class="o">=</span> <span class="n">Binomial</span><span class="p">(</span><span class="mf">0.5</span><span class="p">,</span> <span class="mi">12</span><span class="p">)</span>
-</pre></div>
-
-     </div>
-</div>
-</div>
-</div>
-
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[48]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-     <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="nb">repr</span><span class="p">(</span><span class="n">binom1</span><span class="p">)</span>
-</pre></div>
-
-     </div>
-</div>
-</div>
-</div>
-
-<div class="jp-Cell-outputWrapper">
-
-
-<div class="jp-OutputArea jp-Cell-outputArea">
-
-<div class="jp-OutputArea-child">
-
-    
-    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[48]:</div>
-
-
-
-
-<div class="jp-RenderedText jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/plain">
-<pre>&#39;mean 10.0, standard deviation 5.0, p 0.5, n 20&#39;</pre>
-</div>
-
-</div>
-
-</div>
-
-</div>
-
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[38]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-     <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="nb">repr</span><span class="p">(</span><span class="n">binom2</span><span class="p">)</span>
-</pre></div>
-
-     </div>
-</div>
-</div>
-</div>
-
-<div class="jp-Cell-outputWrapper">
-
-
-<div class="jp-OutputArea jp-Cell-outputArea">
-
-<div class="jp-OutputArea-child">
-
-    
-    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[38]:</div>
-
-
-
-
-<div class="jp-RenderedText jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/plain">
-<pre>&#39;mean 3.5999999999999996, standard deviation 2.5199999999999996, p 0.3, n 12&#39;</pre>
-</div>
-
-</div>
-
-</div>
-
-</div>
-
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[39]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-     <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="mi">20</span> <span class="o">*</span> <span class="o">.</span><span class="mi">5</span><span class="o">**</span><span class="mi">2</span>
-</pre></div>
-
-     </div>
-</div>
-</div>
-</div>
-
-<div class="jp-Cell-outputWrapper">
-
-
-<div class="jp-OutputArea jp-Cell-outputArea">
-
-<div class="jp-OutputArea-child">
-
-    
-    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[39]:</div>
-
-
-
-
-<div class="jp-RenderedText jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/plain">
-<pre>5.0</pre>
-</div>
-
-</div>
-
-</div>
-
-</div>
-
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[40]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-     <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">binom1</span><span class="o">.</span><span class="n">replace_stats_with_data</span><span class="p">()</span>
-</pre></div>
-
-     </div>
-</div>
-</div>
-</div>
-
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[41]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-     <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="nb">repr</span><span class="p">(</span><span class="n">binom1</span><span class="p">)</span>
-</pre></div>
-
-     </div>
-</div>
-</div>
-</div>
-
-<div class="jp-Cell-outputWrapper">
-
-
-<div class="jp-OutputArea jp-Cell-outputArea">
-
-<div class="jp-OutputArea-child">
-
-    
-    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[41]:</div>
-
-
-
-
-<div class="jp-RenderedText jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/plain">
-<pre>&#39;mean 3.0769230769230766, standard deviation 3.0769230769230766, p 0.6153846153846154, n 13&#39;</pre>
-</div>
-
-</div>
-
-</div>
-
-</div>
-
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[49]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-     <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">binom1</span> <span class="o">+</span> <span class="n">binom2</span>
-</pre></div>
-
-     </div>
-</div>
-</div>
-</div>
-
-<div class="jp-Cell-outputWrapper">
-
-
-<div class="jp-OutputArea jp-Cell-outputArea">
-
-<div class="jp-OutputArea-child">
-
-    
-    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[49]:</div>
-
-
-
-
-<div class="jp-RenderedText jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/plain">
-<pre>mean 16.0, standard deviation 8.0, p 0.5, n 32</pre>
-</div>
-
-</div>
-
-</div>
-
-</div>
-
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[50]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-     <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">binom1</span><span class="o">.</span><span class="n">plot_bar_pdf</span><span class="p">()</span>
-</pre></div>
-
-     </div>
-</div>
-</div>
-</div>
-
-<div class="jp-Cell-outputWrapper">
-
-
-<div class="jp-OutputArea jp-Cell-outputArea">
-
-<div class="jp-OutputArea-child">
-
-    
-    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-
-
-
-
-<div class="jp-RenderedImage jp-OutputArea-output ">
-<img src="data:image/png;base64,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
-"
->
-</div>
-
-</div>
-
-<div class="jp-OutputArea-child">
-
-    
-    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[50]:</div>
-
-
-
-
-<div class="jp-RenderedText jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/plain">
-<pre>([0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20],
- [9.5367431640625e-07,
-  1.9073486328125e-05,
-  0.0001811981201171875,
-  0.001087188720703125,
-  0.004620552062988281,
-  0.0147857666015625,
-  0.03696441650390625,
-  0.0739288330078125,
-  0.12013435363769531,
-  0.16017913818359375,
-  0.17619705200195312,
-  0.16017913818359375,
-  0.12013435363769531,
-  0.0739288330078125,
-  0.03696441650390625,
-  0.0147857666015625,
-  0.004620552062988281,
-  0.001087188720703125,
-  0.0001811981201171875,
-  1.9073486328125e-05,
-  9.5367431640625e-07])</pre>
-</div>
-
-</div>
-
-</div>
-
-</div>
-
 </div>
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
@@ -17226,7 +16619,39 @@ From everything I can tell, this is likely to be more of a side hustle than a fu
 </div>
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h2 id="Logistic-Reminders-Regarding-Writing-a-Medium-Post">Logistic Reminders Regarding Writing a Medium Post<a class="anchor-link" href="#Logistic-Reminders-Regarding-Writing-a-Medium-Post">&#182;</a></h2><ul>
+<li><p>Make is short and sweet</p>
+<blockquote><ul>
+<li>1-2 pages  </li>
+<li>200-500 words  </li>
+<li>Less than 8 mins read  </li>
+</ul>
+</blockquote>
+</li>
+<li><p>Create an outline</p>
+</li>
+<li><p>Review your work</p>
+</li>
+</ul>
+
+</div>
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <p><a href="#overview"><img style='background-color:yellowgreen; float:left; border-radius:50%;' src='back.png' width=60 alt='BackToTop'></a></p>
+
+</div>
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h1 id="Project-Documentation-">Project Documentation <a class="anchor" id="project-documentation" /><a class="anchor-link" href="#Project-Documentation-">&#182;</a></h1><p>Project documentation is essential for getting others to understand why and how your code is relevant to them, whether they are potentials users of your project or developers who may contribute to your code. A great first step in project documentation is your README file. It will often be the first interaction most users will have with your project.</p>
+<p>Whether it's an application or a package, your project should absolutely come with a README file. At a minimum, this should explain what it does, list its dependencies, and provide sufficiently detailed instructions on how to use it. Make it as simple as possible for others to understand the purpose of your project and quickly get something working.</p>
+<p>Translating all your ideas and thoughts formally on paper can be a little difficult, but you'll get better over time, and doing so makes a significant difference in helping others realize the value of your project. Writing this documentation can also help you improve the design of your code, as you're forced to think through your design decisions more thoroughly. It also helps future contributors to follow your original intentions.</p>
+<p>There is a <a href="https://classroom.udacity.com/courses/ud777">full Udacity course on this topic</a>.</p>
+<p>Here are a few READMEs from some popular projects:</p>
+<p><a href="https://github.com/twbs/bootstrap">ootstrap</a><br>
+<a href="https://github.com/scikit-learn/scikit-learn">cikit-learn</a><br>
+<a href="https://github.com/jjrunner/stackoverflow">tack Overflow Blog</a></p>
 
 </div>
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
