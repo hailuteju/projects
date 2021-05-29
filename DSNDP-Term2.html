@@ -3,7 +3,7 @@
 <head><meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>DSNDP-Term2</title><script type="text/javascript" src="http://me.kis.v2.scr.kaspersky-labs.com/FD126C42-EBFA-4E12-B309-BB3FDD723AC1/main.js?attr=xDSrRp2bLqDE4Mv1uKCiENwcqivhAtJsD2JVxuifs9MQyxLrsWYEy8HKjwTbVC7LpcZQBj-5lkclOcuAFHkSfep2qX-rV6RMLdB_PIGHU4KzttgmFuFjwnY7eXZ95DaqRhmaE2zwj0khI8pHnSME3j85rbgEnYkmzly3ZYcTsB-RxJW2IWPKSM_w0bBAqZFS" charset="UTF-8"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
+<title>DSNDP-Term2</title><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
 
 
 
@@ -14283,6 +14283,8 @@ a.anchor-link {
 <a href="#bootstrap-lib">Bootstrap Library</a><br>
 <a href="#flask">Flask</a><br>
 <a href="#deploy">Deploying your app</a><br>
+<a href="#apis">APIs</a><br>
+<a href="#rest">REST Architecture</a><br>
 <a href="#medium">Medium: Getting Started Posts and Links</a><br>
 <a href="#project-documentation">Project Documentation</a></p>
 
@@ -16799,6 +16801,202 @@ terminal command:</p>
 <li>requirements.txt</li>
 <li>runtime.txt</li>
 </ul>
+
+</div>
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<p><a href="#overview"><img style='background-color:yellowgreen; float:left; border-radius:50%;' src='back.png' width=60 alt='BackToTop'></a></p>
+
+</div>
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h2 id="What-is-an-API?--">What is an API?  <a class="anchor" id="apis" /><a class="anchor-link" href="#What-is-an-API?--">&#182;</a></h2><p>Instead of downloading World Bank data via a csv file, you're going to download the data using the World Bank API.</p>
+<p>API is an acronym that stands for application programming interface. API’s provide a standardized way for two applications to talk to each other. For this project, the applications communicating with each other are the server application where World Bank stores data and your web application.</p>
+<p>If you wanted to pull data directly from the World Bank’s server, you’d have to know what database system the World Bank was using. You’d also need permission to log in directly to the server, which would be a security risk for the World Bank. And if the World Bank ever migrated its data to a new system, you would have to rewrite all of your code again.</p>
+<p>The API sits between your web app and the World Bank server. And the API allows you to execute code on the World Bank server without getting direct access.</p>
+<p>All sorts of companies have public facing APIs including Facebook, Twitter, Google and Pinterest. You can pull data from these companies to create your own applications.</p>
+<p>In the next section, you’ll get practice using Python to pull data from the World Bank API. This will set you up for creating the web app with data from the API instead of using data from a csv file.</p>
+<h3 id="APIs-Besides-the-World-Bank">APIs Besides the World Bank<a class="anchor-link" href="#APIs-Besides-the-World-Bank">&#182;</a></h3><p>All types of companies have APIs. Some of these APIs are only for internal company use while other APIs help the public consume data. A few examples of public APIs include the <a href="https://developer.twitter.com/en/docs">Twitter API</a>, the <a href="https://cloud.google.com/maps-platform/">Google Maps API</a>, the <a href="https://developers.facebook.com/docs/graph-api">Facebook Graph API</a>, and the <a href="https://www.data.gov/developers/apis">US Government Data APIs</a>.</p>
+<p>In addition, oftentimes you can find open source libraries or development kits for connecting to an API. For example, <a href="https://github.com/mobolic/facebook-sdk">here</a> is an open source Python development kit for the Facebook Graph API.</p>
+<p>Some APIs might be used for pulling data from a database. But other APIs are for adding data to a database. For example, you might make an application that automatically tweets the current weather. In that case, you would use the Twitter API to post a tweet, which in reality inserts a tweet into Twitter's database.</p>
+<h3 id="Using-an-API">Using an API<a class="anchor-link" href="#Using-an-API">&#182;</a></h3><p>In the next few parts of the lesson, you'll see how to use the World Bank API. This API is relatively straightforward to use. Each API, however, will have a different set up and only allow you to take certain actions. In general, you send a request via a web url that specifies the information you want. You receive data back typically in <a href="https://www.w3schools.com/xml/xml_whatis.asp">XML</a> or <a href="https://www.w3schools.com/js/js_json_intro.asp">JSON</a>.</p>
+<p>The XML standard was developed in the 1970s and 1980s and soon became a common way to transfer data over the web. JSON was developed in the mid 1990s. Over time, <a href="https://www.programmableweb.com/news/jsons-eight-year-convergence-xml/2013/12/26">JSON has increased in popularity relative to XML</a> perhaps because JSON is easier to parse.</p>
+<p>Some APIs require authentication; essentially the company with the API gives you 'credentials' so that they can track how you are using the API and ensure you have the proper permissions.</p>
+<p>Some APIs might let you extract data from a database. Other APIs might even let you insert data into a database depending on the use case. Most APIs include extensive documentation so that you can figure out how to use APIs.</p>
+<p>If you ever can’t figure out how to use an API, search online for examples. You can search for something like, “Examples for using the World Bank API” or “Examples for using the Facebook API”.</p>
+<p>Move on to the next section to see how to use the World Bank API and incorporate it into a web app.</p>
+
+</div>
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<p><a href="#overview"><img style='background-color:yellowgreen; float:left; border-radius:50%;' src='back.png' width=60 alt='BackToTop'></a></p>
+
+</div>
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h2 id="REST-Architecture-">REST Architecture <a class="anchor" id="rest" /><a class="anchor-link" href="#REST-Architecture-">&#182;</a></h2><p>REST is a software architecture for the web. You don't need to understand how REST works in order to use an API. but you will see the term used quite frequently when working with APIs. Modern web APIs are often called RESTFul to indicate that they conform to a REST Architecture.</p>
+<ul>
+<li><a href="https://restfulapi.net/">REST API Tutorial</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Representational_state_transfer">Wikipedia Article on REST</a></li>
+</ul>
+<h3 id="World-Bank-API">World Bank API<a class="anchor-link" href="#World-Bank-API">&#182;</a></h3><p>Here is the website where the csv files were downloaded for the World Bank web app: <a href="https://data.worldbank.org/indicator?tab=featured">World Bank Indicator Data</a></p>
+<p>And here is the link to the World Bank API documenation: <a href="https://datahelpdesk.worldbank.org/knowledgebase/articles/889392-api-documentation">World Bank API Documentation</a></p>
+<p>One tricky aspect of working with the World Bank API is that it only gives back 50 results at a time. There is an option called per_page that allows you to return up to 1000 results. However, some queries might have more than 1000 results. That's where the <code>page</code> option comes into play. You'll notice that at the very beginning of the data, there is a variable called <code>page</code> and another one called <code>pages</code>. If page=1 and pages=4, then you'd need to write 4 queries with the option page=1, page=2, page=3 and page=4.</p>
+<p>Next, you'll practice pulling data from the API using Python code.</p>
+
+</div>
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h1 id="Using-APIs-with-Python">Using APIs with Python<a class="anchor-link" href="#Using-APIs-with-Python">&#182;</a></h1><p>This Ipython notebook shows you how to use the World Bank API with the Python requests library. At the end there is a short exercise for you.</p>
+<p>To access APIs in Python, you can use the <a href="http://docs.python-requests.org/en/master/user/install/">requests library</a>.</p>
+<p>To install, you can go in a terminal and type:</p>
+
+<pre><code>pip install pipenv
+pipenv install requests</code></pre>
+<p>When you use the requests library, it's like putting an API url in a browser except now Python does this behind the scenes programatically and then stores the results in a variable. The classroom workspaces already have the requests library installed. Here is a demonstration of how the request library works.</p>
+
+</div>
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h1 id="Explanation-of-Results">Explanation of Results<a class="anchor-link" href="#Explanation-of-Results">&#182;</a></h1>
+<pre><code>import requests</code></pre>
+<p>This line imports the requests library.</p>
+
+<pre><code>r = requests.get('http://api.worldbank.org/v2/countries/br/indicators/NY.GDP.MKTP.CD')</code></pre>
+<p>The line <code>requests.get</code> sends out a "get" request to the url specified in parenthesis. The html standard specifies different types of <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods">request methods</a> with the most common one being "get". A "get" request is generally reserved for obtaining data from a server. For the World Bank API, you'll only need to make "get" requests. An API's documentation will generally tell you what type of requests to make.</p>
+<p>The last line of code outputs the results.</p>
+
+<pre><code>r.text</code></pre>
+<p>In this case, the output is xml data. <a href="https://www.w3schools.com/xml/xml_whatis.asp">XML</a> is a language for storing and transmitting data. XML was standardized in the late 1990s. A few years later, the JSON format came along and serves a similar purpose. JSON tends to be much easier to work with and luckily, the World Bank API can return data in json format by specifying the format parameters.</p>
+<p>Next, you'll see how to send parameters with your get request.</p>
+
+</div>
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h1 id="Sending-Parameters-with-the-Get-Request">Sending Parameters with the Get Request<a class="anchor-link" href="#Sending-Parameters-with-the-Get-Request">&#182;</a></h1><p>This url, <code>http://api.worldbank.org/v2/countries/br/indicators/NY.GDP.MKTP.CD</code>, obtains GDP data for Brazil. You specify the country name with the <a href="http://www.nationsonline.org/oneworld/country_code_list.htm">2-character ISO code</a> and then specify the economic indicator that you want, which in this case is <code>NY.GDP.MKTP.CD</code>.</p>
+<p>To see all of the possible indicators, visit the <a href="https://data.worldbank.org/indicator?tab=all">world bank indicator dashboard</a> or use the API address <code>http://api.worldbank.org/v2/indicators</code>.</p>
+<p>The url syntax is specific to the World Bank API. Other APIs might be different.</p>
+<p>When making a get request, you can add parameters to the end of the url with the following syntax:
+<code>http://api.worldbank.org/v2/countries/br/indicators/NY.GDP.MKTP.CD?format=json&amp;per_page=500&amp;date=1990:2015</code></p>
+<p>where a question mark was added at the end of the url following by each parameter name and parameter values. The parameters are separated by the ampersand &amp; sign. Adding parameters to a get request with the question mark ? and ampersand is the standard way for adding parameters to a get request.</p>
+<p>With the requests library, you can send this get request in one of two ways. The first way specifies the entire url in a single string.</p>
+
+<pre><code>r = requests.get('http://api.worldbank.org/v2/countries/br/indicators/NY.GDP.MKTP.CD?format=json&amp;per_page=500&amp;date=1990:2015')</code></pre>
+<p>The second way separate the base url and the parameters.</p>
+
+<pre><code>payload = {'format': 'json', 'per_page': '500', 'date':'1990:2015'}
+r = requests.get('http://api.worldbank.org/v2/countries/br/indicators/NY.GDP.MKTP.CD', params=payload)</code></pre>
+<p>Why use the second version? It's somewhat easier to write programs with the second version because you can easily change the values in the payload dictionary whereas the first version involves manipulating the url string.</p>
+<p>Run the code cell below to show that both versions give the same results.</p>
+
+</div>
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<div class="highlight"><pre><span></span><span class="n">all_indicators_url</span> <span class="o">=</span> <span class="s1">&#39;http://api.worldbank.org/v2/indicators&#39;</span>
+
+<span class="n">page_content</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">all_indicators_url</span><span class="p">)</span><span class="o">.</span><span class="n">text</span>
+<span class="n">soup</span> <span class="o">=</span> <span class="n">BeautifulSoup</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">text</span><span class="p">,</span> <span class="s1">&#39;lxml&#39;</span><span class="p">)</span>
+
+<span class="n">soup</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s2">&quot;wb:indicator&quot;</span><span class="p">)</span>
+
+
+
+<span class="n">r_url</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;http://api.worldbank.org/v2/countries/br/indicators/NY.GDP.MKTP.CD?format=json&amp;per_page=500&amp;date=1990:2015&#39;</span><span class="p">)</span>
+
+<span class="n">payload</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;format&#39;</span><span class="p">:</span> <span class="s1">&#39;json&#39;</span><span class="p">,</span> <span class="s1">&#39;per_page&#39;</span><span class="p">:</span> <span class="s1">&#39;500&#39;</span><span class="p">,</span> <span class="s1">&#39;date&#39;</span><span class="p">:</span><span class="s1">&#39;1990:2015&#39;</span><span class="p">}</span>
+<span class="n">r_payload</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;http://api.worldbank.org/v2/countries/br/indicators/NY.GDP.MKTP.CD&#39;</span><span class="p">,</span> <span class="n">params</span><span class="o">=</span><span class="n">payload</span><span class="p">)</span>
+
+<span class="c1"># Test if both results are the same string</span>
+<span class="k">assert</span> <span class="n">r_url</span><span class="o">.</span><span class="n">text</span> <span class="o">==</span> <span class="n">r_payload</span><span class="o">.</span><span class="n">text</span>
+</pre></div>
+
+</div>
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h1 id="Navigating-the-JSON-response">Navigating the JSON response<a class="anchor-link" href="#Navigating-the-JSON-response">&#182;</a></h1><p>Once you have the data, what can you do with it? The requests library comes with a json decoder. In order to obtain the json response, all you have to do is use the .json() method like so:</p>
+
+<pre><code>payload = {'format': 'json', 'per_page': '500', 'date':'1990:2015'}
+r = requests.get('http://api.worldbank.org/v2/countries/br/indicators/NY.GDP.MKTP.CD', params=payload)
+r.json()</code></pre>
+<p>Run the cell below to see the results:</p>
+
+</div>
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<div class="highlight"><pre><span></span><span class="n">url</span> <span class="o">=</span> <span class="s1">&#39;http://api.worldbank.org/v2/countries/br/indicators/NY.GDP.MKTP.CD&#39;</span>
+<span class="n">payload</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;format&#39;</span><span class="p">:</span> <span class="s1">&#39;json&#39;</span><span class="p">,</span> <span class="s1">&#39;per_page&#39;</span><span class="p">:</span> <span class="s1">&#39;500&#39;</span><span class="p">,</span> <span class="s1">&#39;date&#39;</span><span class="p">:</span><span class="s1">&#39;1990:2015&#39;</span><span class="p">}</span>
+
+<span class="n">r</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">params</span><span class="o">=</span><span class="n">payload</span><span class="p">)</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
+</pre></div>
+
+</div>
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<p>The result is a list of json values, which you can iterate through to access all of the data. Every API will return data in a slightly different way, so you need to look at the data and figure out how to clean the data for your purposes. For example, in the json response, the first entry contains meta data about the results. The second entry is a list containing all of the data points. For the purposes of analyzing the data, you only need the second entry, which you can access with <code>r.json()[1]</code>. Run the code cells below to see an example of how to iterate through the data, clean the data, and then plot the results.</p>
+
+</div>
+</div>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<div class="highlight"><pre><span></span><span class="c1"># get the World Bank GDP data for Brazil, China and the United States</span>
+<span class="n">payload</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;format&#39;</span><span class="p">:</span> <span class="s1">&#39;json&#39;</span><span class="p">,</span> <span class="s1">&#39;per_page&#39;</span><span class="p">:</span> <span class="s1">&#39;500&#39;</span><span class="p">,</span> <span class="s1">&#39;date&#39;</span><span class="p">:</span><span class="s1">&#39;1990:2016&#39;</span><span class="p">}</span>
+<span class="n">r</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;http://api.worldbank.org/v2/countries/br;cn;us/indicators/NY.GDP.MKTP.CD&#39;</span><span class="p">,</span> 
+                 <span class="n">params</span><span class="o">=</span><span class="n">payload</span><span class="p">)</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
+
+<span class="c1"># put the results in a dictionary where each country contains a list of all the x values and all the y values</span>
+<span class="c1"># this will make it easier to plot the results</span>
+<span class="c1"># from collections import defaultdict</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">defaultdict</span><span class="p">(</span><span class="nb">list</span><span class="p">)</span>
+
+<span class="c1"># for entry in r[1]:</span>
+<span class="c1">#     # check if country is already in dictionary. If so, append the new x and y values to the lists</span>
+<span class="c1">#     if data[entry[&#39;country&#39;][&#39;value&#39;]]:</span>
+<span class="c1">#         data[entry[&#39;country&#39;][&#39;value&#39;]][0].append(int(entry[&#39;date&#39;]))</span>
+<span class="c1">#         data[entry[&#39;country&#39;][&#39;value&#39;]][1].append(float(entry[&#39;value&#39;]))       </span>
+<span class="c1">#     else: # if country not in dictionary, then initialize the lists that will hold the x and y values</span>
+<span class="c1">#         data[entry[&#39;country&#39;][&#39;value&#39;]] = [[],[]]   </span>
+<span class="k">for</span> <span class="n">entry</span> <span class="ow">in</span> <span class="n">r</span><span class="p">[</span><span class="mi">1</span><span class="p">]:</span> 
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">data</span><span class="p">[</span><span class="n">entry</span><span class="p">[</span><span class="s1">&#39;country&#39;</span><span class="p">][</span><span class="s1">&#39;value&#39;</span><span class="p">]]:</span>
+        <span class="c1"># if country not in dictionary, then initialize the lists that will hold the x and y values</span>
+        <span class="n">data</span><span class="p">[</span><span class="n">entry</span><span class="p">[</span><span class="s1">&#39;country&#39;</span><span class="p">][</span><span class="s1">&#39;value&#39;</span><span class="p">]]</span> <span class="o">=</span> <span class="p">[[],[]]</span> 
+    <span class="c1"># If country is already in dictionary, append the new x and y values to the lists    </span>
+    <span class="n">data</span><span class="p">[</span><span class="n">entry</span><span class="p">[</span><span class="s1">&#39;country&#39;</span><span class="p">][</span><span class="s1">&#39;value&#39;</span><span class="p">]][</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">entry</span><span class="p">[</span><span class="s1">&#39;date&#39;</span><span class="p">]))</span>
+    <span class="n">data</span><span class="p">[</span><span class="n">entry</span><span class="p">[</span><span class="s1">&#39;country&#39;</span><span class="p">][</span><span class="s1">&#39;value&#39;</span><span class="p">]][</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">float</span><span class="p">(</span><span class="n">entry</span><span class="p">[</span><span class="s1">&#39;value&#39;</span><span class="p">]))</span>       
+
+<span class="c1"># show the results contained in the data dictionary</span>
+<span class="k">for</span> <span class="n">country</span> <span class="ow">in</span> <span class="n">data</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">country</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="n">country</span><span class="p">][</span><span class="mi">0</span><span class="p">])</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="n">country</span><span class="p">][</span><span class="mi">1</span><span class="p">])</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+
+<span class="c1"># visualize the results with matplotlib</span>
+<span class="c1"># import matplotlib.pyplot as plt</span>
+<span class="c1"># %matplotlib inline </span>
+
+<span class="c1"># create a plot for each country</span>
+<span class="k">with</span> <span class="n">plt</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">context</span><span class="p">(</span><span class="s1">&#39;ggplot&#39;</span><span class="p">,</span> <span class="nb">dict</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">8</span><span class="p">),</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">100</span><span class="p">)):</span>
+    <span class="k">for</span> <span class="n">country</span> <span class="ow">in</span> <span class="n">data</span><span class="p">:</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="n">country</span><span class="p">][</span><span class="mi">0</span><span class="p">],</span> <span class="n">data</span><span class="p">[</span><span class="n">country</span><span class="p">][</span><span class="mi">1</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="n">country</span><span class="p">)</span>
+
+<span class="c1"># label the plot</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;GDP for Brazil, China, and USA 1990 to 2016&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;year&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;GDP&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
 
 </div>
 </div>
