@@ -14373,99 +14373,6 @@ a.anchor-link {
 </div>
 </div>
 
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[2]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-     <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="s2">&quot;{</span><span class="se">\&quot;</span><span class="s2">url</span><span class="se">\&quot;</span><span class="s2">: </span><span class="se">\&quot;</span><span class="s2">https://storage.googleapis.com/iexcloud-hl37opg/api/logos/MSFT.png</span><span class="se">\&quot;</span><span class="s2">}&quot;</span>
-<span class="p">)</span>
-</pre></div>
-
-     </div>
-</div>
-</div>
-</div>
-
-<div class="jp-Cell-outputWrapper">
-
-
-<div class="jp-OutputArea jp-Cell-outputArea">
-
-<div class="jp-OutputArea-child">
-
-    
-    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[2]:</div>
-
-
-
-
-<div class="jp-RenderedText jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/plain">
-<pre>{&#39;url&#39;: &#39;https://storage.googleapis.com/iexcloud-hl37opg/api/logos/MSFT.png&#39;}</pre>
-</div>
-
-</div>
-
-</div>
-
-</div>
-
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[23]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-     <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># https://sandbox.iexapis.com/stable/stock/JNJ/stats/marketcap?token=YOUR_TOKEN</span>
-
-<span class="c1"># url = &quot;https://cloud.iexapis.com/stable/time-series/REPORTED_FINANCIALS/AAPL/10-K?token=sk_566d76954c7542b3a6584dbd1ead58c5&quot;</span>
-<span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;https://cloud.iexapis.com/stable/time-series/FUNDAMENTALS/AAPL/quarterly?last=4&amp;token=sk_566d76954c7542b3a6584dbd1ead58c5&quot;</span>
-<span class="c1"># r = requests.get(url).json()</span>
-<span class="c1"># </span>
-<span class="nb">print</span><span class="p">(</span><span class="n">r</span><span class="p">)</span>
-</pre></div>
-
-     </div>
-</div>
-</div>
-</div>
-
-<div class="jp-Cell-outputWrapper">
-
-
-<div class="jp-OutputArea jp-Cell-outputArea">
-
-<div class="jp-OutputArea-child">
-
-    
-    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-
-
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
-<pre>[{&#39;AccountsPayableCurrent&#39;: 42296000000, &#39;AccountsReceivableNetCurrent&#39;: 16120000000, &#39;AccruedIncomeTaxesNoncurrent&#39;: 28170000000, &#39;AccumulatedDepreciationDepletionAndAmortizationPropertyPlantAndEquipment&#39;: 66760000000, &#39;AccumulatedOtherComprehensiveIncomeLossNetOfTax&#39;: -406000000, &#39;AllocatedShareBasedCompensationExpense&#39;: 6829000000, &#39;AmendmentFlag&#39;: &#39;false&#39;, &#39;AmountUtilizedUnderShareRepurchaseProgram&#39;: 168600000000, &#39;Assets&#39;: 323888000000, &#39;AssetsCurrent&#39;: 143713000000, &#39;AssetsNoncurrent&#39;: 180175000000, &#39;AvailableForSaleDebtSecuritiesAccumulatedGrossUnrealizedGainBeforeTax&#39;: 2784000000, &#39;AvailableForSaleDebtSecuritiesAccumulatedGrossUnrealizedLossBeforeTax&#39;: 385000000, &#39;AvailableForSaleDebtSecuritiesAmortizedCostBasis&#39;: 189431000000, &#39;AvailableForSaleSecuritiesDebtSecurities&#39;: 191830000000, &#39;CashAndCashEquivalentsAtCarryingValue&#39;: 38016000000, &#39;CashCashEquivalentsRestrictedCashAndRestrictedCashEquivalents&#39;: 39789000000, &#39;CashCashEquivalentsRestrictedCashAndRestrictedCashEquivalentsPeriodIncreaseDecreaseIncludingExchangeRateEffect&#39;: -10435000000, &#39;CityAreaCode&#39;: 408, &#39;CollateralAlreadyReceivedAggregateFairValue&#39;: 875000000, &#39;CommercialPaper&#39;: 5000000000, &#39;CommonStockDividendsPerShareDeclared&#39;: 0.795, &#39;CommonStockParOrStatedValuePerShare&#39;: 1e-05, &#39;CommonStockSharesAuthorized&#39;: 50400000000, &#39;CommonStockSharesIssued&#39;: 16976763000, &#39;CommonStockSharesOutstanding&#39;: 16976763000, &#39;CommonStocksIncludingAdditionalPaidInCapital&#39;: 50779000000, &#39;ComprehensiveIncomeNetOfTax&#39;: 57453000000, &#39;ContractWithCustomerLiability&#39;: 10200000000, &#39;ContractWithCustomerLiabilityCurrent&#39;: 6643000000, &#39;ContractWithCustomerLiabilityRevenueRecognized&#39;: 5000000000, &#39;CostOfGoodsAndServicesSold&#39;: 169559000000, &#39;CurrentFederalTaxExpenseBenefit&#39;: 6306000000, &#39;CurrentFiscalYearEndDate&#39;: &#39;--09-26&#39;, &#39;CurrentForeignTaxExpenseBenefit&#39;: 3134000000, &#39;CurrentStateAndLocalTaxExpenseBenefit&#39;: 455000000, &#39;DebtInstrumentCarryingAmount&#39;: 106078000000, &#39;DebtInstrumentTerm&#39;: &#39;P9M&#39;, &#39;DebtInstrumentUnamortizedDiscountPremiumAndDebtIssuanceCostsNet&#39;: 314000000, &#39;DecreaseInUnrecognizedTaxBenefitsIsReasonablyPossible&#39;: 3900000000, &#39;DeferredFederalIncomeTaxExpenseBenefit&#39;: -3619000000, &#39;DeferredForeignIncomeTaxExpenseBenefit&#39;: 3383000000, &#39;DeferredIncomeTaxExpenseBenefit&#39;: -215000000, &#39;DeferredIncomeTaxLiabilities&#39;: 10138000000, &#39;DeferredStateAndLocalIncomeTaxExpenseBenefit&#39;: 21000000, &#39;DeferredTaxAssetsDeferredIncome&#39;: 1638000000, &#39;DeferredTaxAssetsGoodwillAndIntangibleAssets&#39;: 8317000000, &#39;DeferredTaxAssetsGross&#39;: 19336000000, &#39;DeferredTaxAssetsLeaseLiabilities&#39;: 2038000000, &#39;DeferredTaxAssetsLiabilitiesNet&#39;: 8157000000, &#39;DeferredTaxAssetsNet&#39;: 18295000000, &#39;DeferredTaxAssetsOther&#39;: 2409000000, &#39;DeferredTaxAssetsTaxDeferredExpenseReservesAndAccruals&#39;: 4934000000, &#39;DeferredTaxAssetsValuationAllowance&#39;: 1041000000, &#39;DeferredTaxLiabilitiesLeasingArrangements&#39;: 1862000000, &#39;DeferredTaxLiabilitiesMinimumTaxonForeignEarnings&#39;: 7045000000, &#39;DeferredTaxLiabilitiesOther&#39;: 705000000, &#39;DeferredTaxLiabilitiesOtherComprehensiveIncome&#39;: 526000000, &#39;DefinedContributionPlanMaximumAnnualContributionsPerEmployeeAmount&#39;: 19500, &#39;Depreciation&#39;: 9700000000, &#39;DepreciationDepletionAndAmortization&#39;: 11056000000, &#39;DerivativeAssetsReductionforMasterNettingArrangements&#39;: 2800000000, &#39;DerivativeFairValueOfDerivativeNet&#39;: -312000000, &#39;DerivativeLiabilitiesReductionforMasterNettingArrangements&#39;: 2800000000, &#39;DocumentAnnualReport&#39;: &#39;true&#39;, &#39;DocumentFiscalPeriodFocus&#39;: &#39;FY&#39;, &#39;DocumentFiscalYearFocus&#39;: 2020, &#39;DocumentPeriodEndDate&#39;: &#39;2020-09-26&#39;, &#39;DocumentTransitionReport&#39;: &#39;false&#39;, &#39;DocumentType&#39;: &#39;10-K&#39;, &#39;EarningsPerShareBasic&#39;: 3.31, &#39;EarningsPerShareDiluted&#39;: 3.28, &#39;EarningsPerSharePolicyTextBlock&#39;: &#39;The Company applies the treasury stock method to determine the dilutive effect of potentially dilutive securities.&#39;, &#39;EffectiveIncomeTaxRateContinuingOperations&#39;: 0.144, &#39;EffectiveIncomeTaxRateReconciliationAtFederalStatutoryIncomeTaxRate&#39;: 0.21, &#39;EffectiveIncomeTaxRateReconciliationShareBasedCompensationExcessTaxBenefitAmount&#39;: -930000000, &#39;EffectiveIncomeTaxRateReconciliationTaxCutsAndJobsActOf2017Amount&#39;: -582000000, &#39;EmployeeServiceShareBasedCompensationNonvestedAwardsTotalCompensationCostNotYetRecognized&#39;: 12200000000, &#39;EmployeeServiceShareBasedCompensationNonvestedAwardsTotalCompensationCostNotYetRecognizedPeriodForRecognition1&#39;: &#39;P2Y7M6D&#39;, &#39;EmployeeServiceShareBasedCompensationTaxBenefitFromCompensationExpense&#39;: 2476000000, &#39;EntityAddressAddressLine1&#39;: &#39;One Apple Park Way&#39;, &#39;EntityAddressCityOrTown&#39;: &#39;Cupertino&#39;, &#39;EntityAddressPostalZipCode&#39;: 95014, &#39;EntityAddressStateOrProvince&#39;: &#39;CA&#39;, &#39;EntityCentralIndexKey&#39;: 320193, &#39;EntityCurrentReportingStatus&#39;: &#39;Yes&#39;, &#39;EntityEmergingGrowthCompany&#39;: &#39;false&#39;, &#39;EntityFileNumber&#39;: &#39;001-36743&#39;, &#39;EntityFilerCategory&#39;: &#39;Large Accelerated Filer&#39;, &#39;EntityIncorporationStateCountryCode&#39;: &#39;CA&#39;, &#39;EntityInteractiveDataCurrent&#39;: &#39;Yes&#39;, &#39;EntityRegistrantName&#39;: &#39;Apple Inc.&#39;, &#39;EntityShellCompany&#39;: &#39;false&#39;, &#39;EntitySmallBusiness&#39;: &#39;false&#39;, &#39;EntityTaxIdentificationNumber&#39;: &#39;94-2404110&#39;, &#39;EntityVoluntaryFilers&#39;: &#39;No&#39;, &#39;EntityWellKnownSeasonedIssuer&#39;: &#39;Yes&#39;, &#39;EquitySecuritiesWithoutReadilyDeterminableFairValueAmount&#39;: 2800000000, &#39;FederalIncomeTaxExpenseBenefitContinuingOperations&#39;: 2687000000, &#39;FinanceLeaseLiability&#39;: 661000000, &#39;FinanceLeaseLiabilityCurrent&#39;: 24000000, &#39;FinanceLeaseLiabilityCurrentStatementOfFinancialPositionExtensibleList&#39;: &#39;us-gaap:OtherLiabilitiesCurrent&#39;, &#39;FinanceLeaseLiabilityNoncurrent&#39;: 637000000, &#39;FinanceLeaseLiabilityNoncurrentStatementOfFinancialPositionExtensibleList&#39;: &#39;us-gaap:OtherLiabilitiesNoncurrent&#39;, &#39;FinanceLeaseLiabilityPaymentsDue&#39;: 1090000000, &#39;FinanceLeaseLiabilityPaymentsDueAfterYearFive&#39;: 895000000, &#39;FinanceLeaseLiabilityPaymentsDueNextTwelveMonths&#39;: 43000000, &#39;FinanceLeaseLiabilityPaymentsDueYearFive&#39;: 25000000, &#39;FinanceLeaseLiabilityPaymentsDueYearFour&#39;: 30000000, &#39;FinanceLeaseLiabilityPaymentsDueYearThree&#39;: 54000000, &#39;FinanceLeaseLiabilityPaymentsDueYearTwo&#39;: 43000000, &#39;FinanceLeaseLiabilityUndiscountedExcessAmount&#39;: 429000000, &#39;FinanceLeaseRightOfUseAsset&#39;: 629000000, &#39;FinanceLeaseRightOfUseAssetStatementOfFinancialPositionExtensibleList&#39;: &#39;us-gaap:PropertyPlantAndEquipmentNet&#39;, &#39;ForeignIncomeTaxExpenseBenefitContinuingOperations&#39;: 6517000000, &#39;GainLossFromComponentsExcludedFromAssessmentOfFairValueHedgeEffectivenessNet&#39;: 465000000, &#39;GrossProfit&#39;: 104956000000, &#39;HedgeAccountingAdjustmentsRelatedToLongTermDebt&#39;: 1676000000, &#39;IcfrAuditorAttestationFlag&#39;: &#39;true&#39;, &#39;IncomeLossFromContinuingOperationsBeforeIncomeTaxesExtraordinaryItemsNoncontrollingInterest&#39;: 67091000000, &#39;IncomeLossFromContinuingOperationsBeforeIncomeTaxesForeign&#39;: 38100000000, &#39;IncomeTaxExpenseBenefit&#39;: 9680000000, &#39;IncomeTaxReconciliationForeignIncomeTaxRateDifferential&#39;: -2534000000, &#39;IncomeTaxReconciliationIncomeTaxExpenseBenefitAtFederalStatutoryIncomeTaxRate&#39;: 14089000000, &#39;IncomeTaxReconciliationOtherAdjustments&#39;: -58000000, &#39;IncomeTaxReconciliationStateAndLocalIncomeTaxes&#39;: 423000000, &#39;IncomeTaxReconciliationTaxCreditsResearch&#39;: 728000000, &#39;IncomeTaxesPaidNet&#39;: 9501000000, &#39;IncreaseDecreaseInAccountsPayable&#39;: -4062000000, &#39;IncreaseDecreaseInAccountsReceivable&#39;: -6917000000, &#39;IncreaseDecreaseInContractWithCustomerLiability&#39;: 2081000000, &#39;IncreaseDecreaseInInventories&#39;: 127000000, &#39;IncreaseDecreaseInOtherOperatingAssets&#39;: 9588000000, &#39;IncreaseDecreaseInOtherOperatingLiabilities&#39;: 8916000000, &#39;IncreaseDecreaseInOtherReceivables&#39;: -1553000000, &#39;InterestCostsIncurred&#39;: 2800000000, &#39;InterestExpense&#39;: 2873000000, &#39;InterestPaidNet&#39;: 3002000000, &#39;InventoryNet&#39;: 4061000000, &#39;InvestmentIncomeInterestAndDividend&#39;: 3763000000, &#39;LesseeOperatingAndFinanceLeaseLiabilityToBePaidAfterYearFive&#39;: 4740000000, &#39;LesseeOperatingAndFinanceLeaseLiabilityToBePaidYearFive&#39;: 985000000, &#39;LesseeOperatingAndFinanceLeaseLiabilityToBePaidYearFour&#39;: 1098000000, &#39;LesseeOperatingAndFinanceLeaseLiabilityToBePaidYearOne&#39;: 1536000000, &#39;LesseeOperatingAndFinanceLeaseLiabilityToBePaidYearThree&#39;: 1371000000, &#39;LesseeOperatingAndFinanceLeaseLiabilityToBePaidYearTwo&#39;: 1504000000, &#39;LesseeOperatingLeaseLeaseNotYetCommencedPaymentsDue&#39;: 1700000000, &#39;LesseeOperatingLeaseLiabilityPaymentsDue&#39;: 10144000000, &#39;LesseeOperatingLeaseLiabilityPaymentsDueAfterYearFive&#39;: 3845000000, &#39;LesseeOperatingLeaseLiabilityPaymentsDueNextTwelveMonths&#39;: 1493000000, &#39;LesseeOperatingLeaseLiabilityPaymentsDueYearFive&#39;: 960000000, &#39;LesseeOperatingLeaseLiabilityPaymentsDueYearFour&#39;: 1068000000, &#39;LesseeOperatingLeaseLiabilityPaymentsDueYearThree&#39;: 1317000000, &#39;LesseeOperatingLeaseLiabilityPaymentsDueYearTwo&#39;: 1461000000, &#39;LesseeOperatingLeaseLiabilityUndiscountedExcessAmount&#39;: 963000000, &#39;LesseeOperatingandFinanceLeaseLiabilityPaymentsDue&#39;: 11234000000, &#39;LesseeOperatingandFinanceLeaseLiabilityUndiscountedExcessAmount&#39;: 1392000000, &#39;LesseeOperatingandFinanceLeaseTermofContract&#39;: &#39;P10Y&#39;, &#39;Liabilities&#39;: 258549000000, &#39;LiabilitiesAndStockholdersEquity&#39;: 323888000000, &#39;LiabilitiesCurrent&#39;: 105392000000, &#39;LiabilitiesNoncurrent&#39;: 153157000000, &#39;LocalPhoneNumber&#39;: &#39;996-1010&#39;, &#39;LongTermDebtCurrent&#39;: 8773000000, &#39;LongTermDebtMaturitiesRepaymentsOfPrincipalAfterYearFive&#39;: 55341000000, &#39;LongTermDebtMaturitiesRepaymentsOfPrincipalInNextTwelveMonths&#39;: 8750000000, &#39;LongTermDebtMaturitiesRepaymentsOfPrincipalInYearFive&#39;: 10914000000, &#39;LongTermDebtMaturitiesRepaymentsOfPrincipalInYearFour&#39;: 10115000000, &#39;LongTermDebtMaturitiesRepaymentsOfPrincipalInYearThree&#39;: 11389000000, &#39;LongTermDebtMaturitiesRepaymentsOfPrincipalInYearTwo&#39;: 9569000000, &#39;LongTermDebtNoncurrent&#39;: 98667000000, &#39;MarketableSecuritiesCurrent&#39;: 52927000000, &#39;MarketableSecuritiesNoncurrent&#39;: 100887000000, &#39;MaximumLengthOfTimeHedgedInInterestRateCashFlowHedge1&#39;: &#39;P7Y&#39;, &#39;NetCashProvidedByUsedInFinancingActivities&#39;: -86820000000, &#39;NetCashProvidedByUsedInInvestingActivities&#39;: -4289000000, &#39;NetCashProvidedByUsedInOperatingActivities&#39;: 80674000000, &#39;NetIncomeLoss&#39;: 57411000000, &#39;NoncurrentAssets&#39;: 36766000000, &#39;NonoperatingIncomeExpense&#39;: 803000000, &#39;NontradeReceivablesCurrent&#39;: 21325000000, &#39;OperatingExpenses&#39;: 38668000000, &#39;OperatingIncomeLoss&#39;: 66288000000, &#39;OperatingLeaseCost&#39;: 1500000000, &#39;OperatingLeaseLiability&#39;: 9181000000, &#39;OperatingLeaseLiabilityCurrent&#39;: 1436000000, &#39;OperatingLeaseLiabilityCurrentStatementOfFinancialPositionExtensibleList&#39;: &#39;us-gaap:OtherLiabilitiesCurrent&#39;, &#39;OperatingLeaseLiabilityNoncurrent&#39;: 7745000000, &#39;OperatingLeaseLiabilityNoncurrentStatementOfFinancialPositionExtensibleList&#39;: &#39;us-gaap:OtherLiabilitiesNoncurrent&#39;, &#39;OperatingLeasePayments&#39;: 1500000000, &#39;OperatingLeaseRightOfUseAsset&#39;: 8570000000, &#39;OperatingLeaseRightOfUseAssetStatementOfFinancialPositionExtensibleList&#39;: &#39;us-gaap:OtherAssetsNoncurrent&#39;, &#39;OperatingandFinanceLeaseLiability&#39;: 9842000000, &#39;OperatingandFinanceLeaseRightofUseAsset&#39;: 9199000000, &#39;OperatingandFinanceLeaseWeightedAverageDiscountRatePercent&#39;: 0.02, &#39;OperatingandFinanceLeaseWeightedAverageRemainingLeaseTerm&#39;: &#39;P10Y3M18D&#39;, &#39;OtherAccruedLiabilitiesNoncurrent&#39;: 26320000000, &#39;OtherAssetsCurrent&#39;: 11264000000, &#39;OtherAssetsNoncurrent&#39;: 42522000000, &#39;OtherComprehensiveIncomeLossAvailableForSaleSecuritiesAdjustmentNetOfTax&#39;: 1139000000, &#39;OtherComprehensiveIncomeLossCashFlowHedgeGainLossBeforeReclassificationAndTax&#39;: 308000000, &#39;OtherComprehensiveIncomeLossCashFlowHedgeGainLossReclassificationAfterTax&#39;: 1264000000, &#39;OtherComprehensiveIncomeLossCashFlowHedgeGainLossReclassificationBeforeTax&#39;: 1545000000, &#39;OtherComprehensiveIncomeLossDerivativeExcludedComponentIncreaseDecreaseBeforeAdjustmentsAndTax&#39;: -168000000, &#39;OtherComprehensiveIncomeLossDerivativeInstrumentGainLossafterReclassificationandTax&#39;: -1185000000, &#39;OtherComprehensiveIncomeLossDerivativeInstrumentGainLossbeforeReclassificationafterTax&#39;: 79000000, &#39;OtherComprehensiveIncomeLossForeignCurrencyTransactionAndTranslationAdjustmentNetOfTax&#39;: 88000000, &#39;OtherComprehensiveIncomeLossNetOfTaxPortionAttributableToParent&#39;: 42000000, &#39;OtherComprehensiveIncomeLossReclassificationAdjustmentFromAOCIForSaleOfSecuritiesNetOfTax&#39;: 63000000, &#39;OtherComprehensiveIncomeUnrealizedHoldingGainLossOnSecuritiesArisingDuringPeriodNetOfTax&#39;: 1202000000, &#39;OtherLiabilitiesCurrent&#39;: 42684000000, &#39;OtherLiabilitiesNoncurrent&#39;: 54490000000, &#39;OtherNoncashIncomeExpense&#39;: 97000000, &#39;OtherNonoperatingIncomeExpense&#39;: -87000000, &#39;PaymentsForProceedsFromOtherInvestingActivities&#39;: 791000000, &#39;PaymentsForRepurchaseOfCommonStock&#39;: 72358000000, &#39;PaymentsOfDividends&#39;: 14081000000, &#39;PaymentsRelatedToTaxWithholdingForShareBasedCompensation&#39;: 3634000000, &#39;PaymentsToAcquireAvailableForSaleSecuritiesDebt&#39;: 114938000000, &#39;PaymentsToAcquireBusinessesNetOfCashAcquired&#39;: 1524000000, &#39;PaymentsToAcquireOtherInvestments&#39;: 210000000, &#39;PaymentsToAcquirePropertyPlantAndEquipment&#39;: 7309000000, &#39;PerformanceObligationsinArrangements&#39;: 3, &#39;ProceedsFromIssuanceOfCommonStock&#39;: 880000000, &#39;ProceedsFromIssuanceOfLongTermDebt&#39;: 16091000000, &#39;ProceedsFromMaturitiesPrepaymentsAndCallsOfAvailableForSaleSecurities&#39;: 69918000000, &#39;ProceedsFromOtherShortTermDebt&#39;: 5200000000, &#39;ProceedsFromPaymentsForOtherFinancingActivities&#39;: -126000000, &#39;ProceedsFromRepaymentsOfCommercialPaper&#39;: -963000000, &#39;ProceedsFromRepaymentsOfShortTermDebtMaturingInMoreThanThreeMonths&#39;: -1063000000, &#39;ProceedsFromRepaymentsOfShortTermDebtMaturingInThreeMonthsOrLess&#39;: 100000000, &#39;ProceedsFromSaleAndMaturityOfOtherInvestments&#39;: 92000000, &#39;ProceedsFromSaleOfAvailableForSaleSecuritiesDebt&#39;: 50473000000, &#39;ProceedsFromShortTermDebtMaturingInMoreThanThreeMonths&#39;: 6185000000, &#39;PropertyPlantAndEquipmentGross&#39;: 103526000000, &#39;PropertyPlantAndEquipmentNet&#39;: 36766000000, &#39;RepaymentsOfLongTermDebt&#39;: 12629000000, &#39;RepaymentsOfOtherShortTermDebt&#39;: 5200000000, &#39;RepaymentsOfShortTermDebtMaturingInMoreThanThreeMonths&#39;: 7248000000, &#39;ResearchAndDevelopmentExpense&#39;: 18752000000, &#39;RestrictedCashAndCashEquivalentsAtCarryingValue&#39;: 36000000, &#39;RestrictedCashAndCashEquivalentsCurrentAssetStatementOfFinancialPositionExtensibleList&#39;: &#39;us-gaap:OtherAssetsCurrent&#39;, &#39;RestrictedCashAndCashEquivalentsNoncurrent&#39;: 1737000000, &#39;RestrictedCashAndCashEquivalentsNoncurrentAssetStatementOfFinancialPositionExtensibleList&#39;: &#39;us-gaap:OtherAssetsNoncurrent&#39;, &#39;RestrictedInvestments&#39;: 18600000000, &#39;RetainedEarningsAccumulatedDeficit&#39;: 14966000000, &#39;RevenueFromContractWithCustomerExcludingAssessedTax&#39;: 274515000000, &#39;RightofUseAssetsObtainedinExchangeforOperatingandFinanceLeaseLiabilities&#39;: 10500000000, &#39;SellingGeneralAndAdministrativeExpense&#39;: 19916000000, &#39;ShareBasedCompensation&#39;: 6829000000, &#39;ShortTermDebtWeightedAverageInterestRate&#39;: 0.0062, &#39;StandardProductWarrantyAccrual&#39;: 3354000000, &#39;StandardProductWarrantyAccrualPayments&#39;: 2956000000, &#39;StandardProductWarrantyAccrualWarrantiesIssued&#39;: 2740000000, &#39;StateAndLocalIncomeTaxExpenseBenefitContinuingOperations&#39;: 476000000, &#39;StockRepurchaseProgramAuthorizedAmount1&#39;: 225000000000, &#39;StockRepurchasedAndRetiredDuringPeriodShares&#39;: 917000000, &#39;StockRepurchasedAndRetiredDuringPeriodValue&#39;: 72500000000, &#39;StockholdersEquity&#39;: 65339000000, &#39;TradingSymbol&#39;: &#39;AAPL&#39;, &#39;UnrecognizedTaxBenefits&#39;: 16475000000, &#39;UnrecognizedTaxBenefitsDecreasesResultingFromPriorPeriodTaxPositions&#39;: 791000000, &#39;UnrecognizedTaxBenefitsDecreasesResultingFromSettlementsWithTaxingAuthorities&#39;: 85000000, &#39;UnrecognizedTaxBenefitsIncomeTaxPenaltiesAndInterestAccrued&#39;: 1400000000, &#39;UnrecognizedTaxBenefitsIncomeTaxPenaltiesAndInterestExpense&#39;: 85000000, &#39;UnrecognizedTaxBenefitsIncreasesResultingFromCurrentPeriodTaxPositions&#39;: 1347000000, &#39;UnrecognizedTaxBenefitsIncreasesResultingFromPriorPeriodTaxPositions&#39;: 454000000, &#39;UnrecognizedTaxBenefitsReductionsResultingFromLapseOfApplicableStatuteOfLimitations&#39;: 69000000, &#39;UnrecognizedTaxBenefitsThatWouldImpactEffectiveTaxRate&#39;: 8800000000, &#39;UnrecordedUnconditionalPurchaseObligationBalanceOnFifthAnniversary&#39;: 104000000, &#39;UnrecordedUnconditionalPurchaseObligationBalanceOnFirstAnniversary&#39;: 3476000000, &#39;UnrecordedUnconditionalPurchaseObligationBalanceOnFourthAnniversary&#39;: 357000000, &#39;UnrecordedUnconditionalPurchaseObligationBalanceOnSecondAnniversary&#39;: 2885000000, &#39;UnrecordedUnconditionalPurchaseObligationBalanceOnThirdAnniversary&#39;: 1700000000, &#39;UnrecordedUnconditionalPurchaseObligationBalanceSheetAmount&#39;: 8652000000, &#39;UnrecordedUnconditionalPurchaseObligationDueAfterFiveYears&#39;: 130000000, &#39;VariableLeaseCost&#39;: 9300000000, &#39;WeightedAverageNumberDilutedSharesOutstandingAdjustment&#39;: 176095000, &#39;WeightedAverageNumberOfDilutedSharesOutstanding&#39;: 17528214000, &#39;WeightedAverageNumberOfSharesOutstandingBasic&#39;: 17352119000, &#39;accessionNumber&#39;: &#39;0000320193-20-000096&#39;, &#39;cik&#39;: &#39;0000320193&#39;, &#39;dateFiled&#39;: 1604016000000, &#39;documentType&#39;: &#39;10-K&#39;, &#39;entityName&#39;: &#39;Apple Inc.&#39;, &#39;irsNumber&#39;: &#39;942404110&#39;, &#39;periodEnd&#39;: 1601078400000, &#39;update&#39;: &#39;20201029&#39;, &#39;id&#39;: &#39;REPORTED_FINANCIALS&#39;, &#39;key&#39;: &#39;AAPL&#39;, &#39;subkey&#39;: &#39;10-K&#39;, &#39;date&#39;: 1604016000000, &#39;updated&#39;: 1613080881000}]
-</pre>
-</div>
-</div>
-
-</div>
-
-</div>
-
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-     <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span> 
-</pre></div>
-
-     </div>
-</div>
-</div>
-</div>
-
 </div>
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
@@ -17770,9 +17677,9 @@ u
 
 
 
-<div id="de64be7c-fc7c-4cc3-9bf0-3e9a498ec29f" class="jupyter-widgets jp-OutputArea-output ">
+<div id="23aa1671-0c0e-4b1e-874e-70c397d5c2fd" class="jupyter-widgets jp-OutputArea-output ">
 <script type="text/javascript">
-var element = document.getElementById('de64be7c-fc7c-4cc3-9bf0-3e9a498ec29f');
+var element = document.getElementById('23aa1671-0c0e-4b1e-874e-70c397d5c2fd');
 </script>
 <script type="application/vnd.jupyter.widget-view+json">
 {"model_id": "b37959f986454c54afda83186e5aeadc", "version_major": 2, "version_minor": 0}
@@ -17835,9 +17742,9 @@ var element = document.getElementById('de64be7c-fc7c-4cc3-9bf0-3e9a498ec29f');
 
 
 
-<div id="4dd8aaf2-1cf1-4140-bee3-841e3cd699bf" class="jupyter-widgets jp-OutputArea-output ">
+<div id="7f73525f-61f1-453c-a590-0742eea681c1" class="jupyter-widgets jp-OutputArea-output ">
 <script type="text/javascript">
-var element = document.getElementById('4dd8aaf2-1cf1-4140-bee3-841e3cd699bf');
+var element = document.getElementById('7f73525f-61f1-453c-a590-0742eea681c1');
 </script>
 <script type="application/vnd.jupyter.widget-view+json">
 {"model_id": "21b38c8d43ba4b5bba7153327e947e84", "version_major": 2, "version_minor": 0}
@@ -17893,9 +17800,9 @@ var element = document.getElementById('4dd8aaf2-1cf1-4140-bee3-841e3cd699bf');
 
 
 
-<div id="933f9a12-31e0-4e76-ad8f-9b5094a70f33" class="jupyter-widgets jp-OutputArea-output ">
+<div id="ac82ec7a-b11c-412b-a227-a9be6b4bd776" class="jupyter-widgets jp-OutputArea-output ">
 <script type="text/javascript">
-var element = document.getElementById('933f9a12-31e0-4e76-ad8f-9b5094a70f33');
+var element = document.getElementById('ac82ec7a-b11c-412b-a227-a9be6b4bd776');
 </script>
 <script type="application/vnd.jupyter.widget-view+json">
 {"model_id": "459ae4a52798468e9b4873dc59475880", "version_major": 2, "version_minor": 0}
